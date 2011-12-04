@@ -1,0 +1,16 @@
+<% title "Features" %>
+
+<p>
+  <strong>Sid:</strong>
+  <%= @features.sID %>
+</p>
+<p>
+  <strong>Name:</strong>
+  <%= @features.name %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_features_path(@features) %> |
+  <%= link_to "Destroy", @features, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", features_path %>
+</p>

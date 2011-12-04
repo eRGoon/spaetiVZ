@@ -1,0 +1,32 @@
+<%= form_for @spaeti do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :street %><br />
+    <%= f.text_field :street %>
+  </p>
+  <p>
+    <%= f.label :number %><br />
+    <%= f.text_field :number %>
+  </p>
+  <p>
+    <%= f.label :postal %><br />
+    <%= f.text_field :postal %>
+  </p>
+  <p>
+    <%= f.label :city %><br />
+    <%= f.text_field :city %>
+  </p>
+  <p>
+    <%= f.label :district %><br />
+    <%= f.text_field :district %>
+  </p>
+  <p>
+    <%= f.label :open %><br />
+    <%= f.text_field :open %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

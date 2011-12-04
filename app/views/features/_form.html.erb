@@ -1,0 +1,12 @@
+<%= form_for @features do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :sID %><br />
+    <%= f.number_field :sID %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
