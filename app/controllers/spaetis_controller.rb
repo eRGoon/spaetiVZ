@@ -1,22 +1,19 @@
 class SpaetisController < ApplicationController
-  def index
+  before_filter :load
+
+  def load
     @spaetis = Spaeti.all
-  end
-
-  def show
-    @spaeti = Spaeti.find(params[:id])
-  end
-
-  def new
     @spaeti = Spaeti.new
+  end
+
+  def index
   end
 
   def create
     @spaeti = Spaeti.new(params[:spaeti])
     if @spaeti.save
-      redirect_to @spaeti, :notice => "Successfully created spaeti."
-    else
-      render :action => 'new'
+      flash[:notice] = "Successfully created spaeti."
+      @spaetis = Spaeti.all
     end
   end
 
@@ -24,18 +21,24 @@ class SpaetisController < ApplicationController
     @spaeti = Spaeti.find(params[:id])
   end
 
+  def show
+    @spaeti = Spaeti.find(params[:id])
+  end
+
   def update
     @spaeti = Spaeti.find(params[:id])
     if @spaeti.update_attributes(params[:spaeti])
-      redirect_to @spaeti, :notice  => "Successfully updated spaeti."
-    else
-      render :action => 'edit'
+      flash[:notice] = "Successfully updated spaeti."
+      @spaetis = Spaeti.all
     end
   end
 
   def destroy
     @spaeti = Spaeti.find(params[:id])
     @spaeti.destroy
-    redirect_to spaetis_url, :notice => "Successfully destroyed spaeti."
+    flash[:notice] = "Successfully destroyed spaeti."
+    @spaetis = Spaeti.all
   end
 end
+
+

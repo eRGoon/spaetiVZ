@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="de">
   <head>
-    <title><%= content_for?(:title) ? yield(:title) : "Untitled" %></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta charset="utf-8">
+    <title>spaetiVZ</title>
     <%= stylesheet_link_tag "application" %>
-    <%= javascript_include_tag :defaults %>
-    <%= csrf_meta_tag %>
+    <%= javascript_include_tag 'jquery' %>
+    <%= javascript_include_tag 'rails' %>
+    <%= javascript_include_tag 'functions' %>
+    <%= javascript_include_tag 'http://maps.google.com/maps/api/js?sensor=true&region=DE&language=de' %>
     <%= yield(:head) %>
   </head>
   <body>
     <div id="container">
-      <% flash.each do |name, msg| %>
-        <%= content_tag :div, msg, :id => "flash_#{name}" %>
-      <% end %>
-      <%= content_tag :h1, yield(:title) if show_title? %>
+      <div id="flash_notice" style="display: none;"></div>
+      <header>
+        <% title "spaetiVZ" %>
+        <%= content_tag :h1, yield(:title) if show_title? %>
+      </header>
       <%= yield %>
     </div>
   </body>

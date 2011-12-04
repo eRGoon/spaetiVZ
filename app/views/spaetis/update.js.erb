@@ -1,0 +1,8 @@
+<% if @spaeti.errors.any? -%>
+  $("#flash_notice").hide(300);
+<% else -%>
+  $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
+  $("#flash_notice").show(300);
+  $(":input:not(input[type=submit])").val("");
+  $("#spaeti_list").html("<%= escape_javascript( render(:partial => "spaetis") ) %>");
+<% end -%>

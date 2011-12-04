@@ -1,29 +1,10 @@
-<% title "Spaetis" %>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Street</th>
-    <th>Number</th>
-    <th>Postal</th>
-    <th>City</th>
-    <th>District</th>
-    <th>Open</th>
-  </tr>
-  <% for spaeti in @spaetis %>
-    <tr>
-      <td><%= spaeti.name %></td>
-      <td><%= spaeti.street %></td>
-      <td><%= spaeti.number %></td>
-      <td><%= spaeti.postal %></td>
-      <td><%= spaeti.city %></td>
-      <td><%= spaeti.district %></td>
-      <td><%= spaeti.open %></td>
-      <td><%= link_to "Show", spaeti %></td>
-      <td><%= link_to "Edit", edit_spaeti_path(spaeti) %></td>
-      <td><%= link_to "Destroy", spaeti, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
-
-<p><%= link_to "New Spaeti", new_spaeti_path %></p>
+<div id="content">
+  <section id="list">
+    <%= render :partial => "spaetis" %>
+  </section>
+  <section id="detail">
+    <%= render :partial => 'show' %>
+  </section>
+  <div class="clearfix"></div>
+</div>
+<section id="form"><%= render :partial => 'form' %></section>
