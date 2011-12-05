@@ -5,4 +5,7 @@
  * Time: 19:32
  * To change this template use File | Settings | File Templates.
  */
-$("section#detail").html("<%= escape_javascript(render(:partial => "show"))%>");
+$("section#detail div.details").html("<%= escape_javascript(render(:partial => 'show'))%>");
+$("section#detail div.edit").html("<%= escape_javascript(render(:partial => 'form'))%>");
+$("section#detail div.details").stop();
+$("section#detail div.details").slideDown('fast');

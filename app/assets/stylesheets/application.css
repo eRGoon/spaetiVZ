@@ -39,12 +39,119 @@ h1 {
 }
 
 h2 {
-    padding: 5px 0 8px 0;
+    padding: 0 0 8px;
     font-size: 26px;
+}
+
+input[type="text"] {
+    outline: none;
+    font-family: 'Convergence', sans-serif;
+	color: #4d4d4d;
+	color: rgba(77, 77, 77, 0.5);
+	background-color: #f2f2f2;
+	background-color: rgba(242, 242, 242, .3);
+    padding: 5px 3px;
+    margin-right: 10px;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    font-family: 'Convergence', sans-serif;
+	color: #4d4d4d;
+	color: rgba(77, 77, 77, 1);
+	background-color: #f2f2f2;
+	background-color: rgba(255, 255, 255, 1);
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 1);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+
+input[type="submit"] {
+    position: absolute;
+    right: 0;
+    font-family: 'Convergence', sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 8px 15px;
+    margin-top: 15px;
+    text-align: right;
+	color: #ffffff;
+	color: rgba(255, 255, 255, 1);
+    background-color: #D14836;
+    background-image: -webkit-linear-gradient(top,#dd4b39,#d14836);
+    background-image: -moz-linear-gradient(top,#dd4b39,#d14836);
+    background-image: -ms-linear-gradient(top,#dd4b39,#d14836);
+    background-image: -o-linear-gradient(top,#dd4b39,#d14836);
+    background-image: linear-gradient(top,#dd4b39,#d14836);
+    -webkit-box-shadow: inset 0 0 0 1px #fff;
+    -moz-box-shadow: inset 0 0 0 1px #fff;
+    box-shadow: inset 0 0 0 1px #fff;
+    border: 1px solid white;
+    border: 1px solid transparent;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    outline: 1px solid #D14836;
+    outline: 0 transparent;
+}
+input#spaeti_name {
+    width: 100%;
+    font-size: 26px;
+}
+
+form {
+    position: relative;
+    margin-top: 3px;
 }
 
 header {
     height: 150px;
+}
+
+div#flash_notice {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 50%;
+    height: 30px;
+    width: 300px;
+    margin-left: -150px;
+    line-height: 30px;
+    text-align: center;
+	background-color: #000000;
+	background-color: rgba(0, 0, 0, 0.75);
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    z-index: 10;
+}
+
+div#spaeti_errors {
+    display: none;
+    position: fixed;
+    left: 75%;
+    bottom: 10px;
+    width: 400px;
+    margin-left: -200px;
+    line-height: 30px;
+    text-align: center;
+	background-color: #000000;
+	background-color: rgba(0, 0, 0, 0.75);
+    color: #ffffff;
+    border: 1px solid #ffffff;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    z-index: 10;
 }
 
 div#container {
@@ -73,8 +180,9 @@ section#list {
 }
 section#list div.item {
     position: relative;
-    padding:  8px 5px;
-    border: 1px solid #3d3d3d;
+    padding: 8px 5px;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.3);
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -95,6 +203,15 @@ section#list div.item:hover div.commands {
     display: block;
 }
 section#detail {
-    overflow-x: hidden;
-    overflow-y: auto;
+    overflow:  hidden;
+    padding-left: 0;
+    padding-top: 10px;
+}
+section#detail > div {
+    width: 100%;
+    height: 100%;
+}
+section#detail > div p {
+    padding: 3px 5px 5px 0;
+    vertical-align: middle;
 }

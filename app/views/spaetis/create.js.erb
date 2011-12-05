@@ -9,11 +9,11 @@
   /*Hide the flash notice div*/
   $("#flash_notice").hide(300);
 
-  /*Update the html of the div post_errors with the new one*/
+  /*Update the html of the div spaeti_errors with the new one*/
 
-  /*Show the div post_errors*/
+  /*Show the div spaeti_errors*/
 <% else -%>
-  /*Hide the div post_errors*/
+  /*Hide the div spaeti_errors*/
 
   /*Update the html of the div flash_notice with the new one*/
   $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
@@ -24,6 +24,6 @@
   /*Clear the entire form*/
   $(":input:not(input[type=submit])").val("");
 
-  /*Replace the html of the div post_lists with the updated new one*/
-  $("#spaeti_list").html("<%= escape_javascript( render(:partial => "spaetis") ) %>");
+  /*Replace the html of the div spaeti_list with the updated new one*/
+  $("section#list").html("<%= escape_javascript( render(:partial => "spaetis") ) %>");
 <% end -%>

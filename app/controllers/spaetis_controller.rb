@@ -12,7 +12,7 @@ class SpaetisController < ApplicationController
   def create
     @spaeti = Spaeti.new(params[:spaeti])
     if @spaeti.save
-      flash[:notice] = "Successfully created spaeti."
+      flash[:notice] = "Spaetkauf erstellt."
       @spaetis = Spaeti.all
     end
   end
@@ -28,7 +28,7 @@ class SpaetisController < ApplicationController
   def update
     @spaeti = Spaeti.find(params[:id])
     if @spaeti.update_attributes(params[:spaeti])
-      flash[:notice] = "Successfully updated spaeti."
+      flash[:notice] = "Spaetkauf aktualisiert."
       @spaetis = Spaeti.all
     end
   end
@@ -36,7 +36,7 @@ class SpaetisController < ApplicationController
   def destroy
     @spaeti = Spaeti.find(params[:id])
     @spaeti.destroy
-    flash[:notice] = "Successfully destroyed spaeti."
+    flash[:notice] = "Spaetkauf entfernt."
     @spaetis = Spaeti.all
   end
 end

@@ -1,10 +1,14 @@
 <div id="content">
   <section id="list">
-    <%= render :partial => "spaetis" %>
+    <%= render :partial => 'spaetis' %>
   </section>
   <section id="detail">
-    <%= render :partial => 'show' %>
+    <div class="details">
+      <%= render :partial => 'show' %>
+    </div>
+    <div class="edit">
+      <%= render :partial => 'form' %>
+    </div>
   </section>
   <div class="clearfix"></div>
 </div>
-<section id="form"><%= render :partial => 'form' %></section>
