@@ -1,4 +1,4 @@
-<% unless @spaeti.nil? %>
+<div class="inner">
 <%= form_for(@spaeti, :remote => true) do |f| %>
     <%= f.label :name, "Name" %>
     <p>
@@ -16,7 +16,6 @@
     <p>
       <%= f.text_field :open %>
     </p>
-    <p><%= f.submit "Speichern" %></p>
-    <div id= "spaeti_errors"></div>
+    <p><%= f.submit "Erstellen" %></p>
 <% end %>
-<% end %>
+</div>

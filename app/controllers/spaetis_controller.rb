@@ -3,10 +3,14 @@ class SpaetisController < ApplicationController
 
   def load
     @spaetis = Spaeti.all
-    @spaeti = Spaeti.new
+    #@spaeti = Spaeti.new
   end
 
   def index
+  end
+
+  def new
+    @spaeti = Spaeti.new
   end
 
   def create

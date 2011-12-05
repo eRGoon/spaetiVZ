@@ -15,8 +15,11 @@
     <div id="container">
       <div id="flash_notice"></div>
       <header>
-        <% title "spaetiVZ" %>
-        <%= content_tag :h1, yield(:title) if show_title? %>
+        <div>
+          <% title "spaetiVZ" %>
+          <%= content_tag :h1, yield(:title) if show_title? %>
+          <p><%= link_to "New Spaeti", new_spaeti_path, :remote => true, :class => 'new' %></p>
+        </div>
       </header>
       <%= yield %>
     </div>

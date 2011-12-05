@@ -31,16 +31,23 @@ ul, li {
 }
 
 h1 {
-    height: 150px;
-    line-height: 150px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    height: 60px;
     padding:  0 15px;
-    font-size: 48px;
+    font-size: 22px;
     font-style: italic;
 }
 
 h2 {
     padding: 0 0 8px;
     font-size: 26px;
+}
+
+p {
+    padding: 3px 5px;
+    vertical-align: middle;
 }
 
 input[type="text"] {
@@ -74,8 +81,6 @@ input[type="text"]:focus {
 }
 
 input[type="submit"] {
-    position: absolute;
-    right: 0;
     font-family: 'Convergence', sans-serif;
     font-size: 10px;
     font-weight: bold;
@@ -90,9 +95,6 @@ input[type="submit"] {
     background-image: -ms-linear-gradient(top,#dd4b39,#d14836);
     background-image: -o-linear-gradient(top,#dd4b39,#d14836);
     background-image: linear-gradient(top,#dd4b39,#d14836);
-    -webkit-box-shadow: inset 0 0 0 1px #fff;
-    -moz-box-shadow: inset 0 0 0 1px #fff;
-    box-shadow: inset 0 0 0 1px #fff;
     border: 1px solid white;
     border: 1px solid transparent;
     -webkit-border-radius: 3px;
@@ -101,18 +103,23 @@ input[type="submit"] {
     outline: 1px solid #D14836;
     outline: 0 transparent;
 }
-input#spaeti_name {
-    width: 100%;
-    font-size: 26px;
-}
 
 form {
     position: relative;
     margin-top: 3px;
 }
+form.edit_spaeti input#spaeti_name {
+    width: 100%;
+    font-size: 26px;
+}
 
 header {
-    height: 150px;
+    height: 120px;
+}
+header div {
+    height: 20px;
+    padding-top: 95px;
+    margin-left: 20px;
 }
 
 div#flash_notice {
@@ -203,7 +210,7 @@ section#list div.item:hover div.commands {
     display: block;
 }
 section#detail {
-    overflow:  hidden;
+    overflow: hidden;
     padding-left: 0;
     padding-top: 10px;
 }
@@ -213,5 +220,4 @@ section#detail > div {
 }
 section#detail > div p {
     padding: 3px 5px 5px 0;
-    vertical-align: middle;
 }

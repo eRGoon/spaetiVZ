@@ -10,10 +10,13 @@
   $("#flash_notice").hide(300);
 
   /*Update the html of the div spaeti_errors with the new one*/
+  $("#spaeti_errors.new").html("<%= escape_javascript(error_messages_for(@spaeti))%>");
 
   /*Show the div spaeti_errors*/
+  $("#spaeti_errors.new").show(300);
 <% else -%>
   /*Hide the div spaeti_errors*/
+  $("#spaeti_errors.new").hide(300);
 
   /*Update the html of the div flash_notice with the new one*/
   $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
@@ -22,7 +25,7 @@
   $("#flash_notice").show(300);
 
   /*Clear the entire form*/
-  $(":input:not(input[type=submit])").val("");
+  $("form.new_spaeti :input:not(input[type=submit])").val("");
 
   /*Replace the html of the div spaeti_list with the updated new one*/
   $("section#list").html("<%= escape_javascript( render(:partial => "spaetis") ) %>");
