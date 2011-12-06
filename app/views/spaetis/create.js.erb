@@ -27,6 +27,11 @@
   /*Clear the entire form*/
   $("form.new_spaeti :input:not(input[type=submit])").val("");
 
+  $("section#new").animate({"z-index": 20}, 0, 'linear', function() {
+            $(this).empty();
+            $(this).hide();
+        });
+
   /*Replace the html of the div spaeti_list with the updated new one*/
   $("section#list").html("<%= escape_javascript( render(:partial => "spaetis") ) %>");
 <% end -%>

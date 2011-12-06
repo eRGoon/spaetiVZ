@@ -1,21 +1,23 @@
-<div class="inner">
-<%= form_for(@spaeti, :remote => true) do |f| %>
-    <%= f.label :name, "Name" %>
-    <p>
-      <%= f.text_field :name %>
-    </p>
-    <%= f.label :street, "Straße" %> / <%= f.label :number, "Hausnummer" %>
-    <p>
-      <%= f.text_field :street, :size => 40 %><%= f.text_field :number, :size => 5 %>
-    </p>
-    <%= f.label :postal, "PLZ" %> / <%= f.label :city, "Stadt" %> / <%= f.label :district, "Bezirk" %>
-    <p>
-      <%= f.text_field :postal, :size => 5 %><%= f.text_field :city %><%= f.text_field :district %>
-    </p>
-    <%= f.label :open, "geöffnet bis" %>
-    <p>
-      <%= f.text_field :open %>
-    </p>
-    <p><%= f.submit "Erstellen" %></p>
-<% end %>
+<div class="outer">
+  <div class="inner">
+    <%= form_for(@spaeti, :remote => true) do |f| %>
+        <%= f.label :name, "Name" %>
+        <p>
+          <%= f.text_field :name %>
+        </p>
+        <%= f.label :street, "Straße" %> / <%= f.label :number, "Hausnummer" %>
+        <p>
+          <%= f.text_field :street, :size => 25 %><%= f.text_field :number, :size => 5 %>
+        </p>
+        <%= f.label :postal, "PLZ" %> / <%= f.label :city, "Stadt" %> / <%= f.label :district, "Bezirk" %>
+        <p>
+          <%= f.text_field :postal, :size => 5 %><%= f.text_field :city, :size => 25 %><%= f.text_field :district, :size => 20 %>
+        </p>
+        <%= f.label :open, "geöffnet bis" %>
+        <p>
+          <%= f.text_field :open %>
+        </p>
+        <p><%= f.submit "Erstellen" %></p>
+    <% end %>
+  </div>
 </div>

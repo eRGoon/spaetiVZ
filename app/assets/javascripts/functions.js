@@ -5,3 +5,5 @@
  * Time: 18:09
  * To change this template use File | Settings | File Templates.
  */
+$(document).ready(function() {
+});

@@ -3,7 +3,6 @@ class SpaetisController < ApplicationController
 
   def load
     @spaetis = Spaeti.all
-    #@spaeti = Spaeti.new
   end
 
   def index

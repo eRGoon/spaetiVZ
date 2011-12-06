@@ -6,3 +6,6 @@
  * To change this template use File | Settings | File Templates.
  */
 $("section#new").html("<%= escape_javascript(render(:partial => 'formnew'))%>");
+$("section#new").show(0, function() {
+    $(this).animate({"z-index": 20}, 0);
+});
