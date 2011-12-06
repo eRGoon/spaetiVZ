@@ -6,4 +6,12 @@
  * To change this template use File | Settings | File Templates.
  */
 $(document).ready(function() {
+  $("section#new").click(function() {
+      $(this).animate({"z-index": 20}, 0, 'linear', function() {
+            $(this).empty();
+            $(this).hide();
+        });
+  }).children().click(function() {
+          return false;
+      });
 });
