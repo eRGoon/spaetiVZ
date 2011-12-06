@@ -15,11 +15,15 @@
     <div id="container">
       <div id="flash_notice"></div>
       <header>
-        <div>
           <% title "spaetiVZ" %>
           <%= content_tag :h1, yield(:title) if show_title? %>
-          <p><%= link_to "New Spaeti", new_spaeti_path, :remote => true, :class => 'new' %></p>
-        </div>
+          <div id="search">
+            <%= form_tag spaetis_path , :method => 'get', :remote => true, :class => "search" do %>
+                  <%= text_field_tag :search, params[:search] %>
+                  <%= submit_tag "Suchen", :name => nil %>
+            <% end %>
+            <p><%= link_to "New Spaeti", new_spaeti_path, :remote => true, :class => 'new' %></p>
+          </div>
       </header>
       <%= yield %>
     </div>

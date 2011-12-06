@@ -53,31 +53,39 @@ p {
 input[type="text"] {
     outline: none;
     font-family: 'Convergence', sans-serif;
+    padding: 5px 3px;
 	color: #4d4d4d;
 	color: rgba(77, 77, 77, 0.5);
 	background-color: #f2f2f2;
-	background-color: rgba(242, 242, 242, .3);
-    padding: 5px 3px;
-    margin-right: 10px;
+	background-color: rgba(255, 255, 255, 0.3);
     border: 1px solid;
+    border-color: #000000;
     border-color: rgba(0, 0, 0, 0.3);
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
 }
 
-input[type="text"]:focus {
+form.edit_spaeti input[type="text"] {
+    margin-right: 10px;
+    margin-bottom: 3px;
+	color: rgba(77, 77, 77, 0.8);
+	background-color: rgba(242, 242, 242, 1);
+}
+form.edit_spaeti input#spaeti_name {
+    width: 100%;
+    font-size: 26px;
+}
+form.search input[type="text"] {
+    width: 400px;
+    font-size: 17px;
+}
+
+input[type="text"]:focus, form.edit_spaeti input[type="text"]:focus {
     outline: none;
-    font-family: 'Convergence', sans-serif;
-	color: #4d4d4d;
 	color: rgba(77, 77, 77, 1);
-	background-color: #f2f2f2;
 	background-color: rgba(255, 255, 255, 1);
-    border: 1px solid;
     border-color: rgba(0, 0, 0, 1);
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
 }
 
 input[type="submit"] {
@@ -95,8 +103,8 @@ input[type="submit"] {
     background-image: -ms-linear-gradient(top,#dd4b39,#d14836);
     background-image: -o-linear-gradient(top,#dd4b39,#d14836);
     background-image: linear-gradient(top,#dd4b39,#d14836);
-    border: 1px solid white;
-    border: 1px solid transparent;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.3);
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
     border-radius: 3px;
@@ -104,21 +112,27 @@ input[type="submit"] {
     outline: 0 transparent;
 }
 
+form.search input[type="submit"] {
+    margin-top: 0;
+    margin-left: 15px;
+}
+
 form {
     position: relative;
-    margin-top: 3px;
+    padding: 3px 0;
 }
-form.edit_spaeti input#spaeti_name {
-    width: 100%;
-    font-size: 26px;
+
+form.search {
+    position: relative;
+    padding: 8px 0;
 }
 
 header {
     height: 120px;
 }
-header div {
-    height: 20px;
-    padding-top: 95px;
+header div#search {
+    height: 55px;
+    padding-top: 25px;
     margin-left: 20px;
 }
 
@@ -191,9 +205,9 @@ section#new {
     z-index: -1;
     background-color: #000000;
 	background-color: rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: inset 0 0 35px 15px rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: inset 0 0 35px 15px rgba(0, 0, 0, 0.5);
-    box-shadow: inset 0 0 35px 15px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: inset 0 0 25px 5px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: inset 0 0 25px 5px rgba(0, 0, 0, 0.5);
+    box-shadow: inset 0 0 25px 5px rgba(0, 0, 0, 0.5);
 }
 section#new div.inner {
     position: relative;

@@ -2,10 +2,11 @@ class SpaetisController < ApplicationController
   before_filter :load
 
   def load
-    @spaetis = Spaeti.all
+    @spaetis = []
   end
 
   def index
+    @spaetis = Spaeti.search(params[:search]) if params[:search]
   end
 
   def new
@@ -41,7 +42,7 @@ class SpaetisController < ApplicationController
     @spaeti.destroy
     flash[:notice] = "Spaetkauf entfernt."
     @spaetis = Spaeti.all
-  end
+    end
 end
 
 
