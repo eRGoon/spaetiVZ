@@ -6,6 +6,11 @@
  * To change this template use File | Settings | File Templates.
  */
 $(document).ready(function() {
+    $("a.new").click(function() {
+        $("section#detail div.new").show();
+        $("section#detail div.new").slideDown('fast');
+        return false;
+    });
   $("section#new").click(function(e) {
       var sender = $(e.target);
       var isme = sender.attr("id");
@@ -17,7 +22,7 @@ $(document).ready(function() {
           }
       }
 
-      $(this).animate({"z-index": 20}, 0, 'linear', function() {
+      $(this).animate({"z-index": -1}, 0, 'linear', function() {
             $(this).empty();
             $(this).hide();
         });

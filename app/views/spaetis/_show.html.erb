@@ -7,7 +7,7 @@
       <%= @spaeti.postal %> <%= @spaeti.city %> - <%= @spaeti.district %>
     </p>
     <p>
-      <% unless @spaeti.open.empty? %>
+      <% unless @spaeti.open.nil? %>
         <b>ge&ouml;ffnet bis: </b><%= @spaeti.open %>
       <% end %>
     </p>

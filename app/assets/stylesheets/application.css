@@ -66,28 +66,6 @@ input[type="text"] {
     border-radius: 3px;
 }
 
-form.edit_spaeti input[type="text"] {
-    margin-right: 10px;
-    margin-bottom: 3px;
-	color: rgba(77, 77, 77, 0.8);
-	background-color: rgba(242, 242, 242, 1);
-}
-form.edit_spaeti input#spaeti_name {
-    width: 100%;
-    font-size: 26px;
-}
-form.search input[type="text"] {
-    width: 400px;
-    font-size: 17px;
-}
-
-input[type="text"]:focus, form.edit_spaeti input[type="text"]:focus {
-    outline: none;
-	color: rgba(77, 77, 77, 1);
-	background-color: rgba(255, 255, 255, 1);
-    border-color: rgba(0, 0, 0, 1);
-}
-
 input[type="submit"] {
     font-family: 'Convergence', sans-serif;
     font-size: 10px;
@@ -112,19 +90,37 @@ input[type="submit"] {
     outline: 0 transparent;
 }
 
-form.search input[type="submit"] {
-    margin-top: 0;
-    margin-left: 15px;
-}
-
 form {
     position: relative;
     padding: 3px 0;
 }
-
+form input[type="text"] {
+    margin-right: 10px;
+    margin-bottom: 3px;
+	color: rgba(77, 77, 77, 0.8);
+	background-color: rgba(242, 242, 242, 1);
+}
+form input#spaeti_name {
+    width: 100%;
+    font-size: 26px;
+}
+form.search input[type="text"] {
+    width: 400px;
+    font-size: 17px;
+}
+input[type="text"]:focus {
+    outline: none;
+	color: rgba(77, 77, 77, 1);
+	background-color: rgba(255, 255, 255, 1);
+    border-color: rgba(0, 0, 0, 1);
+}
 form.search {
     position: relative;
     padding: 8px 0;
+}
+form.search input[type="submit"] {
+    margin-top: 0;
+    margin-left: 15px;
 }
 
 header {
@@ -156,7 +152,7 @@ div#flash_notice {
     z-index: 10;
 }
 
-div#spaeti_errors {
+div#spaeti_errors, div#newspaeti_errors {
     display: none;
     position: fixed;
     left: 75%;
@@ -192,39 +188,6 @@ div#content {
 section {
     height: 100%;
     padding:  15px;
-}
-section#new {
-    display: none;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 100%;
-    margin-left: -50%;
-    margin-top: -50%;
-    padding:  0;
-    z-index: -1;
-    background-color: #000000;
-	background-color: rgba(0, 0, 0, 0.5);
-    -moz-box-shadow: inset 0 0 25px 5px rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: inset 0 0 25px 5px rgba(0, 0, 0, 0.5);
-    box-shadow: inset 0 0 25px 5px rgba(0, 0, 0, 0.5);
-}
-section#new div.inner {
-    position: relative;
-    width: 400px;
-    margin: 10% auto 0;
-    padding:  15px;
-    border: 1px solid;
-    border-color: rgba(255, 255, 255, 1);
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
-    background-image: linear-gradient(bottom, rgb(177,194,219) 32%, rgb(213,233,255) 66%, rgb(255,255,255) 83%);
-    background-image: -o-linear-gradient(bottom, rgb(177,194,219) 32%, rgb(213,233,255) 66%, rgb(255,255,255) 83%);
-    background-image: -moz-linear-gradient(bottom, rgb(177,194,219) 32%, rgb(213,233,255) 66%, rgb(255,255,255) 83%);
-    background-image: -webkit-linear-gradient(bottom, rgb(177,194,219) 32%, rgb(213,233,255) 66%, rgb(255,255,255) 83%);
-    background-image: -ms-linear-gradient(bottom, rgb(177,194,219) 32%, rgb(213,233,255) 66%, rgb(255,255,255) 83%);
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.32, rgb(177,194,219)), color-stop(0.66, rgb(213,233,255)), color-stop(0.83, rgb(255,255,255)));
 }
 section#list {
     width: 50%;
@@ -268,4 +231,18 @@ section#detail > div {
 }
 section#detail > div p {
     padding: 3px 5px 5px 0px;
+}
+section#detail > div.new {
+    display: none;
+}
+section#detail div.error_messages h2 {
+    padding: 2px 0 4px;
+    font-size: 18px;
+}
+section#detail div.error_messages p {
+    padding: 1px 5px 2px;
+    line-height: 14px;
+}
+section#detail div.error_messages li {
+    line-height: 14px;
 }

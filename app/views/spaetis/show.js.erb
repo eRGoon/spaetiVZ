@@ -7,5 +7,7 @@
  */
 $("section#detail div.details").html("<%= escape_javascript(render(:partial => 'show'))%>");
 $("section#detail div.edit").html("<%= escape_javascript(render(:partial => 'form'))%>");
+$("section#detail div.new").stop();
+$("section#detail div.new").slideUp('fast');
 $("section#detail div.details").stop();
 $("section#detail div.details").slideDown('fast');

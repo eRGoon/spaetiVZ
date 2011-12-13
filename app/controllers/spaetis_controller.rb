@@ -2,16 +2,17 @@ class SpaetisController < ApplicationController
   before_filter :load
 
   def load
-    @spaetis = []
+    @spaetis = Spaeti.all
+    @spaeti = Spaeti.new
   end
 
   def index
     @spaetis = Spaeti.search(params[:search]) if params[:search]
   end
 
-  def new
-    @spaeti = Spaeti.new
-  end
+  #def new
+    #@spaeti = Spaeti.new
+  #end
 
   def create
     @spaeti = Spaeti.new(params[:spaeti])
