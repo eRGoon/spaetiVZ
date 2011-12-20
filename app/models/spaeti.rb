@@ -3,12 +3,12 @@ class Spaeti < ActiveRecord::Base
   validates_presence_of :name, :street, :number, :postal, :city
 
   def self.search(search)
-  if search
-    search_condition = "%" + search + "%"
-    find(:all, :conditions => ['name LIKE ? OR district LIKE ? OR postal LIKE ? OR street LIKE ?',
-                               search_condition, search_condition, search_condition, search_condition])
-  else
-    find(:all)
+    if search
+      search_condition = "%" + search + "%"
+      find(:all, :conditions => ['name LIKE ? OR district LIKE ? OR postal LIKE ? OR street LIKE ?',
+                                 search_condition, search_condition, search_condition, search_condition])
+    else
+      find(:all)
+    end
   end
-end
 end

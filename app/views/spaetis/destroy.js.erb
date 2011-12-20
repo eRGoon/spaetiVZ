@@ -1,4 +1,4 @@
 $("#spaeti_errors").hide(300);
 $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
-$("#flash_notice").show(300);
+$("#flash_notice").show(300).delay(3000).hide(200);
 $("section#list").html("<%= escape_javascript( render(:partial => "spaetis") ) %>");

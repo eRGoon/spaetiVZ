@@ -1,6 +1,6 @@
 @charset "utf-8";
 @import "reset.css" all;
-@import url(http://fonts.googleapis.com/css?family=Convergence) all;
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic,500italic,700italic) all;
 /*
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
@@ -9,11 +9,12 @@
  *= require_tree . 
 */
 
-body, html {
-    width: 100%;
-    height: 100%;
-    overflow:  hidden;
-    font-family: 'Convergence', sans-serif;
+html {
+    background: #ffffff;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
     font-size: 12px;
 	background-color: #f2f2f2;
 	background-color: rgba(242, 242, 242, 1);
@@ -52,7 +53,7 @@ p {
 
 input[type="text"] {
     outline: none;
-    font-family: 'Convergence', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     padding: 5px 3px;
 	color: #4d4d4d;
 	color: rgba(77, 77, 77, 0.5);
@@ -67,7 +68,7 @@ input[type="text"] {
 }
 
 input[type="submit"] {
-    font-family: 'Convergence', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-size: 10px;
     font-weight: bold;
     padding: 8px 15px;
@@ -91,7 +92,6 @@ input[type="submit"] {
 }
 
 form {
-    position: relative;
     padding: 3px 0;
 }
 form input[type="text"] {
@@ -101,7 +101,6 @@ form input[type="text"] {
 	background-color: rgba(242, 242, 242, 1);
 }
 form input#spaeti_name {
-    width: 100%;
     font-size: 26px;
 }
 form.search input[type="text"] {
@@ -121,6 +120,14 @@ form.search {
 form.search input[type="submit"] {
     margin-top: 0;
     margin-left: 15px;
+    background: #4f85bb; /* Old browsers */
+    background: -moz-linear-gradient(top, #4f85bb 0%, #4f85bb 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4f85bb), color-stop(100%,#4f85bb)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #4f85bb 0%,#4f85bb 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #4f85bb 0%,#4f85bb 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #4f85bb 0%,#4f85bb 100%); /* IE10+ */
+    background: linear-gradient(top, #4f85bb 0%,#4f85bb 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4f85bb', endColorstr='#4f85bb',GradientType=0 ); /* IE6-9 */
 }
 
 header {
@@ -171,29 +178,18 @@ div#spaeti_errors, div#newspaeti_errors {
     z-index: 10;
 }
 
-div#container {
-    width: 100%;
-    height: 100%;
-    overflow:  hidden;
-}
-
 div#content {
-    width: 100%;
-    height: 100%;
-    clear: both;
 	background-color: #ffffff;
 	background-color: rgba(255, 255, 255, 1);
 }
 
 section {
-    height: 100%;
+    display: inline-block;
     padding:  15px;
 }
 section#list {
-    width: 50%;
+    width: 630px;
     float: left;
-    overflow-x: hidden;
-    overflow-y: auto;
 }
 section#list div.item {
     position: relative;
@@ -221,19 +217,67 @@ section#list div.item:hover div.commands {
     display: block;
 }
 section#detail {
-    overflow: hidden;
+    min-width: 450px;
     padding-left: 0;
     padding-top: 10px;
-}
-section#detail > div {
-    width: 100%;
-    height: 100%;
 }
 section#detail > div p {
     padding: 3px 5px 5px 0px;
 }
-section#detail > div.new {
+section#detail > div.new, section#detail > div.edit {
+    height: 0;
     display: none;
+}
+section#detail div#comments {
+	background-color: #4d4d4d;
+	background-color: rgba(77, 77, 77, 0.25);
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+section#detail div#comments_list p.comment {
+    margin: 10px 15px;
+    padding: 12px 10px;
+    line-height: 18px;
+    font-size: 14px;
+    font-style: italic;
+	background-color: #ffffff;
+	background-color: rgba(242, 242, 242, 0.4);
+    border: 1px solid;
+    border-color: #999999;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+section#detail div#comment_new {
+    margin: 10px 15px;
+}
+section#detail div#comment_new form textarea {
+    width: 320px;
+    margin-top: 5px;
+    padding: 10px;
+    outline: none;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 14px;
+    font-style: italic;
+	color: #4d4d4d;
+	color: rgba(77, 77, 77, 0.5);
+	background-color: #f2f2f2;
+	background-color: rgba(255, 255, 255, 0.7);
+    border: 1px solid;
+    border-color: #000000;
+    border-color: rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+section#detail div#comment_new form textarea:focus {
+    outline: none;
+	color: rgba(77, 77, 77, 1);
+	background-color: rgba(255, 255, 255, 1);
+    border-color: rgba(0, 0, 0, 0.7);
 }
 section#detail div.error_messages h2 {
     padding: 2px 0 4px;

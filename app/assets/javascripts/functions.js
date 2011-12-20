@@ -7,24 +7,20 @@
  */
 $(document).ready(function() {
     $("a.new").click(function() {
-        $("section#detail div.new").show();
-        $("section#detail div.new").slideDown('fast');
+        if (!$("section#detail div.new").hasClass("active")) {
+            $("section#detail div.active").animate({
+                height: 'toggle'
+            }, 300, function() {
+                $("section#detail div.active").hide();
+                $("section#detail div.new").show();
+                $("section#detail div.new").animate({
+                    height: $("section#detail div.new").height()
+                }, 300, function() {
+                    $("section#detail div.active").removeClass("active");
+                    $("section#detail div.new").addClass("active");
+                });
+            });
+        }
         return false;
     });
-  $("section#new").click(function(e) {
-      var sender = $(e.target);
-      var isme = sender.attr("id");
-
-      if (isme != "new") {
-          isme = sender.attr("class");
-          if (isme != "outer") {
-              return false;
-          }
-      }
-
-      $(this).animate({"z-index": -1}, 0, 'linear', function() {
-            $(this).empty();
-            $(this).hide();
-        });
-  });
 });

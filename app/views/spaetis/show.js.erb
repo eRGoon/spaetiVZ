@@ -6,8 +6,17 @@
  * To change this template use File | Settings | File Templates.
  */
 $("section#detail div.details").html("<%= escape_javascript(render(:partial => 'show'))%>");
-$("section#detail div.edit").html("<%= escape_javascript(render(:partial => 'form'))%>");
-$("section#detail div.new").stop();
-$("section#detail div.new").slideUp('fast');
-$("section#detail div.details").stop();
-$("section#detail div.details").slideDown('fast');
+if (!$("section#detail div.details").hasClass("active")) {
+    $("section#detail div.active").animate({
+        height: 'toggle'
+    }, 300, function() {
+        $("section#detail div.active").hide();
+        $("section#detail div.details").show();
+        $("section#detail div.details").animate({
+            height: $("section#detail div.details").height()
+        }, 300, function() {
+            $("section#detail div.active").removeClass("active");
+            $("section#detail div.details").addClass("active");
+        });
+    });
+}

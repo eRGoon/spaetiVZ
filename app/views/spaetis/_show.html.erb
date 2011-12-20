@@ -1,14 +1,32 @@
 <% unless @spaeti.nil? %>
-    <h2><%= @spaeti.name %></h2>
-    <p>
-      <%= @spaeti.street %> <%= @spaeti.number %>
-    </p>
-    <p>
-      <%= @spaeti.postal %> <%= @spaeti.city %> - <%= @spaeti.district %>
-    </p>
-    <p>
-      <% unless @spaeti.open.nil? %>
-        <b>ge&ouml;ffnet bis: </b><%= @spaeti.open %>
-      <% end %>
-    </p>
+    <div id="spaeti">
+      <h2><%= @spaeti.name %></h2>
+
+      <p>
+        <%= @spaeti.street %> <%= @spaeti.number %>
+      </p>
+
+      <p>
+        <%= @spaeti.postal %> <%= @spaeti.city %>
+        <% unless @spaeti.district.nil? %> -
+            <% end %><%= @spaeti.district %>
+      </p>
+
+      <p>
+        <% unless @spaeti.open.nil? %>
+            <b>ge&ouml;ffnet bis: </b><%= @spaeti.open %>
+        <% end %>
+      </p>
+    </div>
+    <% unless @spaeti.id.nil? %>
+        <h2>Kommentare</h2>
+        <div id="comments">
+          <div id="comments_list">
+            <%= render :partial => 'comments/comments' %>
+          </div>
+          <div id="comment_new">
+            <%= render :partial => 'comments/form' %>
+          </div>
+        </div>
+    <% end %>
 <% end %>

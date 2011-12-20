@@ -5,19 +5,10 @@
  * Time: 19:27
  * To change this template use File | Settings | File Templates.
  */
-<% if @spaeti.errors.any? -%>
+<% if @comment.errors.any? -%>
   /*Hide the flash notice div*/
   $("#flash_notice").hide(300);
-
-  /*Update the html of the div spaeti_errors with the new one*/
-  $("#newspaeti_errors").html("<%= escape_javascript(error_messages_for(@spaeti))%>");
-
-  /*Show the div spaeti_errors*/
-  $("#newspaeti_errors").show(300).delay(3000).hide(200);
 <% else -%>
-  /*Hide the div spaeti_errors*/
-  $("#newspaeti_errors").hide(300);
-
   /*Update the html of the div flash_notice with the new one*/
   $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
 
@@ -25,8 +16,8 @@
   $("#flash_notice").show(300).delay(3000).hide(200);
 
   /*Clear the entire form*/
-  $("form.new_spaeti :input:not(input[type=submit])").val("");
+  $("form#new_comment textarea").val("");
 
   /*Replace the html of the div spaeti_list with the updated new one*/
-  $("section#list").html("<%= escape_javascript( render(:partial => "spaetis") ) %>");
+  $("div#comments_list").html("<%= escape_javascript( render(:partial => 'comments') ) %>");
 <% end -%>

@@ -7,7 +7,7 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   def test_show
-    get :show, :id => Comments.first
+    get :show, :id => Comment.first
     assert_template 'show'
   end
 
@@ -17,38 +17,38 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   def test_create_invalid
-    Comments.any_instance.stubs(:valid?).returns(false)
+    Comment.any_instance.stubs(:valid?).returns(false)
     post :create
     assert_template 'new'
   end
 
   def test_create_valid
-    Comments.any_instance.stubs(:valid?).returns(true)
+    Comment.any_instance.stubs(:valid?).returns(true)
     post :create
     assert_redirected_to comments_url(assigns(:comments))
   end
 
   def test_edit
-    get :edit, :id => Comments.first
+    get :edit, :id => Comment.first
     assert_template 'edit'
   end
 
   def test_update_invalid
-    Comments.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => Comments.first
+    Comment.any_instance.stubs(:valid?).returns(false)
+    put :update, :id => Comment.first
     assert_template 'edit'
   end
 
   def test_update_valid
-    Comments.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => Comments.first
+    Comment.any_instance.stubs(:valid?).returns(true)
+    put :update, :id => Comment.first
     assert_redirected_to comments_url(assigns(:comments))
   end
 
   def test_destroy
-    comments = Comments.first
+    comments = Comment.first
     delete :destroy, :id => comments
     assert_redirected_to comments_url
-    assert !Comments.exists?(comments.id)
+    assert !Comment.exists?(comments.id)
   end
 end

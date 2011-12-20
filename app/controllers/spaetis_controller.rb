@@ -28,6 +28,8 @@ class SpaetisController < ApplicationController
 
   def show
     @spaeti = Spaeti.find(params[:id])
+    @comments = Comment.find(:all, :conditions => {:sID => @spaeti.id})
+    @comment = Comment.new
   end
 
   def update
