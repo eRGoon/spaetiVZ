@@ -1,0 +1,16 @@
+<%= form_for @rate do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :sID %><br />
+    <%= f.number_field :sID %>
+  </p>
+  <p>
+    <%= f.label :points %><br />
+    <%= f.number_field :points %>
+  </p>
+  <p>
+    <%= f.label :ratings %><br />
+    <%= f.number_field :ratings %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

@@ -1,0 +1,20 @@
+<% title "Rate" %>
+
+<p>
+  <strong>Sid:</strong>
+  <%= @rate.sID %>
+</p>
+<p>
+  <strong>Points:</strong>
+  <%= @rate.points %>
+</p>
+<p>
+  <strong>Ratings:</strong>
+  <%= @rate.ratings %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_rate_path(@rate) %> |
+  <%= link_to "Destroy", @rate, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", rates_path %>
+</p>
