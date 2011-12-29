@@ -36,6 +36,6 @@ class CommentsController < ApplicationController
   def destroy
     @comment = Comment.find(params[:id])
     @comment.destroy
-    @comments = Comment.all
+    @comments = Comment.find(:all, :conditions => {:sID => _sID})
   end
 end

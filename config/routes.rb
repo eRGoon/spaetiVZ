@@ -1,4 +1,6 @@
 SpaetiVZ::Application.routes.draw do
+  resources :rates
+
   resources :features
 
   resources :products
