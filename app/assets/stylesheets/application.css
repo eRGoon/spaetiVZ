@@ -95,7 +95,7 @@ form {
     padding: 3px 0;
 }
 form.edit_rate {
-    display: inline;
+    display: inline-block;
 }
 form.edit_rate p {
     display: none;
