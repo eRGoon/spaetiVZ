@@ -1,4 +1,5 @@
 class RatesController < ApplicationController
+=begin
   def index
     @rates = Rate.all
   end
@@ -23,19 +24,23 @@ class RatesController < ApplicationController
   def edit
     @rate = Rate.find(params[:id])
   end
+=end
 
   def update
     @rate = Rate.find(params[:id])
-    if @rate.update_attributes(params[:rate])
-      redirect_to @rate, :notice  => "Successfully updated rate."
-    else
-      render :action => 'edit'
-    end
+    old_points = @rate.points
+    new_points = (params[:rate][:points])
+    new_points = new_points.to_i + old_points
+    old_ratings = @rate.ratings
+    new_ratings = old_ratings + 1
+    @rate.update_attributes({:points => new_points, :ratings => new_ratings})
   end
 
-  def destroy
+=begin
+def destroy
     @rate = Rate.find(params[:id])
     @rate.destroy
     redirect_to rates_url, :notice => "Successfully destroyed rate."
   end
+=end
 end

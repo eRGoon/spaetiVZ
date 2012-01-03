@@ -6,6 +6,14 @@
 </p>
 <p>
   <strong>Points:</strong>
+  <% for i in 1..5 %>
+      <% points = (@rate.points / @rate.ratings).to_int %>
+      <% if i <= points %>
+          <span class="rp rate <%= i %> true"></span>
+      <% else %>
+          <span class="rp rate <%= i %> false"></span>
+      <% end %>
+  <% end %>
   <%= @rate.points %>
 </p>
 <p>

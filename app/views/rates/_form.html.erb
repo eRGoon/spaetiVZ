@@ -1,16 +1,27 @@
-<%= form_for @rate do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :sID %><br />
-    <%= f.number_field :sID %>
-  </p>
-  <p>
-    <%= f.label :points %><br />
-    <%= f.number_field :points %>
-  </p>
-  <p>
-    <%= f.label :ratings %><br />
-    <%= f.number_field :ratings %>
-  </p>
-  <p><%= f.submit %></p>
+<%= form_for(@rate, :remote => true) do |f| %>
+    <p>
+      <%= f.label :sID %><br/>
+      <%= f.number_field :sID %>
+    </p>
+    <p>
+      <%= f.label :points %><br/>
+      <%= f.number_field :points %>
+    </p>
+    <p>
+      <%= f.label :ratings %><br/>
+      <%= f.number_field :ratings %>
+    </p>
+    <p><%= f.submit %></p>
+    <% for i in 1..5 %>
+        <% points = 0 %>
+        <% if @rate.ratings > 0 %>
+            <% points = @rate.points / @rate.ratings %>
+        <% end %>
+        <% points = points.to_i %>
+        <% if i <= points %>
+            <span class="rp rate <%= i %> true"></span>
+        <% else %>
+            <span class="rp rate <%= i %> false"></span>
+        <% end %>
+    <% end %>
 <% end %>

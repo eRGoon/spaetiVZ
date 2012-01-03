@@ -94,6 +94,12 @@ input[type="submit"] {
 form {
     padding: 3px 0;
 }
+form.edit_rate {
+    display: inline;
+}
+form.edit_rate p {
+    display: none;
+}
 form input[type="text"] {
     margin-right: 10px;
     margin-bottom: 3px;
@@ -213,13 +219,29 @@ section#list div.item div.commands {
     line-height: 28px;
     z-index: 10;
 }
+section#list div.item div.commands a {
+    opacity: 0.55;
+}
 section#list div.item:hover div.commands {
     display: block;
+}
+section#list div.item div.commands a:hover {
+    opacity: 1;
 }
 section#detail {
     min-width: 450px;
     padding-left: 0;
     padding-top: 10px;
+}
+section#detail div.details div#spaeti h2 {
+    display: inline;
+    margin-right: 15px;
+}
+section#detail div.details div#spaeti div#rate {
+    display: inline;
+}
+section#detail div.details div#spaeti div#rate span {
+    cursor: pointer;
 }
 section#detail > div p {
     padding: 3px 5px 5px 0px;

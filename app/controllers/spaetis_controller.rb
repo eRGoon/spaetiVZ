@@ -19,6 +19,8 @@ class SpaetisController < ApplicationController
     if @spaeti.save
       flash[:notice] = "Spaetkauf erstellt."
       @spaetis = Spaeti.all
+      @rate = Rate.new({:sID => @spaeti.id, :points => 0, :ratings => 0})
+      @rate.save
     end
   end
 
@@ -29,6 +31,7 @@ class SpaetisController < ApplicationController
   def show
     @spaeti = Spaeti.find(params[:id])
     @comments = Comment.find(:all, :conditions => {:sID => @spaeti.id})
+    @rate = Rate.find(:all, :conditions => {:sID => @spaeti.id})[0]
     @comment = Comment.new
   end
 

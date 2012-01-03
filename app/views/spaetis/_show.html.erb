@@ -2,6 +2,9 @@
     <div id="spaeti">
       <h2><%= @spaeti.name %></h2>
 
+      <div id="rate">
+        <%= render :partial => 'rates/form' %>
+      </div>
       <p>
         <%= @spaeti.street %> <%= @spaeti.number %>
       </p>
