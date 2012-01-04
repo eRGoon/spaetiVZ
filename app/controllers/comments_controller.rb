@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
   #end
 
   def create
-    _sID = params[:sID].to_int
+    _sID = params[:sID]
     @comment = Comment.new(params[:comment])
     @comment.sID = _sID
     if @comment.save

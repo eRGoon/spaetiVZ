@@ -1,6 +1,7 @@
 $("form.edit_rate").html("<%= escape_javascript( render(:partial => "form") ) %>");
 
 var rpR = $("span.rp");
+var ics = new Array();
 
 rpR.each(function() {
     var rate = this;
@@ -15,12 +16,24 @@ rpR.each(function() {
     } else return false;
 
     ic.attr({fill: "#4f85bb", stroke: "none"});
-    ic.scale(.8);
+    ic.scale(.7);
 
-    ic.hover(function() {
-        ic.attr({stroke: "#dd4b39"});
+    ics[currRate] = ic;
+
+    $(this).hover(function() {
+        var other;
+
+        for (var i = 1; i <= currRate; i++) {
+            other = ics[i];
+            other.attr({stroke: "#dd4b39"});
+        }
     }, function() {
-        ic.attr({stroke: "none"});
+        var other;
+
+        for (var i = 1; i <= currRate; i++) {
+            other = ics[i];
+            other.attr({stroke: "none"});
+        }
     });
 
     $(this).click(function() {
