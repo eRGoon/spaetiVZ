@@ -1,0 +1,7 @@
+<% if @features.count > 0 %>
+    <ul>
+        <% @features.each do |feature| %>
+            <li class="feature"><%= feature.name %></li>
+        <% end %>
+    </ul>
+<% end %>

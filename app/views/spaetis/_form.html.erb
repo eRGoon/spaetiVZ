@@ -6,7 +6,7 @@
     </p>
     <%= f.label :street, "Straße" %> / <%= f.label :number, "Hausnummer" %>
     <p>
-      <%= f.text_field :street %><%= f.text_field :number, :size => 5 %>
+      <%= f.text_field :street %><%= f.text_field :number, :size => 3 %>
     </p>
     <%= f.label :postal, "PLZ" %> / <%= f.label :city, "Stadt" %> / <%= f.label :district, "Bezirk" %>
     <p>
@@ -16,6 +16,8 @@
     <p>
       <%= f.text_field :open %>
     </p>
+    <%= render :partial => 'features/features' %>
+    <%= render :partial => 'features/form' %>
     <p><%= f.submit "Speichern" %></p>
     <div id= "spaeti_errors"></div>
 <% end %>

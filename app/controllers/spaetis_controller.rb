@@ -4,6 +4,10 @@ class SpaetisController < ApplicationController
   def load
     @spaetis = Spaeti.all
     @spaeti = Spaeti.new
+    @features = Feature.find(:all, :select => "DISTINCT name")
+    @feature = Feature.new({:sID => @spaeti.id})
+    @products = Product.find(:all, :select => "DISTINCT name")
+    @product = Product.new({:sID => @spaeti.id})
   end
 
   def index
@@ -17,22 +21,29 @@ class SpaetisController < ApplicationController
   def create
     @spaeti = Spaeti.new(params[:spaeti])
     if @spaeti.save
-      flash[:notice] = "Spaetkauf erstellt."
       @spaetis = Spaeti.all
       @rate = Rate.new({:sID => @spaeti.id, :points => 0, :ratings => 0})
       @rate.save
+      # TODO check params for features and products, delete or add them
+      flash[:notice] = "Spaetkauf erstellt."
     end
   end
 
   def edit
     @spaeti = Spaeti.find(params[:id])
+    @features = Feature.find(:all, :select => "DISTINCT name")
+    @feature = Feature.new({:sID => @spaeti.id})
+    @products = Product.find(:all, :select => "DISTINCT name")
+    @product = Product.new({:sID => @spaeti.id})
   end
 
   def show
     @spaeti = Spaeti.find(params[:id])
     @comments = Comment.find(:all, :conditions => {:sID => @spaeti.id})
-    @rate = Rate.find(:all, :conditions => {:sID => @spaeti.id})[0]
     @comment = Comment.new
+    @rate = Rate.find(:all, :conditions => {:sID => @spaeti.id})[0]
+    @features = Feature.find(:all, :conditions => {:sID => @spaeti.id})
+    @products = Product.find(:all, :conditions => {:sID => @spaeti.id})
   end
 
   def update

@@ -1,6 +1,6 @@
 @charset "utf-8";
 @import "reset.css" all;
-@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,500,700,400italic,500italic,700italic) all;
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,800italic,400,600,700,800) all;
 /*
  * This is a manifest file that'll automatically include all the stylesheets available in this directory
  * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
@@ -14,7 +14,7 @@ html {
 }
 
 body {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 12px;
 	background-color: #f2f2f2;
 	background-color: rgba(242, 242, 242, 1);
@@ -46,6 +46,11 @@ h2 {
     font-size: 26px;
 }
 
+h3 {
+    padding: 0 0 8px;
+    font-size: 18px;
+}
+
 p {
     padding: 3px 5px;
     vertical-align: middle;
@@ -53,7 +58,7 @@ p {
 
 input[type="text"] {
     outline: none;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding: 5px 3px;
 	color: #4d4d4d;
 	color: rgba(77, 77, 77, 0.5);
@@ -68,7 +73,7 @@ input[type="text"] {
 }
 
 input[type="submit"] {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 10px;
     font-weight: bold;
     padding: 8px 15px;
@@ -93,6 +98,9 @@ input[type="submit"] {
 
 form {
     padding: 3px 0;
+}
+form input[type="number"] {
+    display: none;
 }
 form.edit_rate {
     display: inline-block;
@@ -234,21 +242,24 @@ section#list div.item div.commands a:hover {
     opacity: 1;
 }
 section#detail {
-    min-width: 450px;
+    min-width: 500px;
     padding-left: 0;
     padding-top: 10px;
 }
-section#detail div.details div#spaeti h2 {
+section#detail div.details header {
+    height: auto;
+}
+section#detail div.details header h2 {
     display: inline;
     margin-right: 15px;
 }
-section#detail div.details div#spaeti div#rate {
+section#detail div.details header div#rate {
     display: inline;
 }
-section#detail div.details div#spaeti div#rate span.rate {
+section#detail div.details header div#rate span.rate {
     cursor: pointer;
 }
-section#detail div.details div#spaeti div#rate span.rates {
+section#detail div.details header div#rate span.rates {
     background: #cccccc;
     padding: 3px;
     font-size: 10px;
@@ -258,6 +269,32 @@ section#detail div.details div#spaeti div#rate span.rates {
     -moz-border-radius: 8px;
     border-radius: 8px;
     color: #4f85bb;
+}
+section#detail div.details div#spaeti {
+    float: left;
+}
+section#detail div.details div#features {
+    max-width: 200px;
+    text-align: right;
+    float: right;
+}
+section#detail div.details div#features > ul {
+    text-align: right;
+}
+section#detail div.details div#features > ul > li {
+    padding: 2px 5px;
+    margin:  2px 2px;
+    text-align: right;
+    float: right;
+    background: #666666;
+    font-size: 10px;
+    border: 1px solid;
+    border-color: #000000;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    color: #ffffff;
+    cursor: pointer;
 }
 section#detail > div p {
     padding: 3px 5px 5px 0px;
@@ -297,7 +334,7 @@ section#detail div#comment_new form textarea {
     margin-top: 5px;
     padding: 10px;
     outline: none;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-style: italic;
 	color: #4d4d4d;

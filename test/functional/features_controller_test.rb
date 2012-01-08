@@ -7,7 +7,7 @@ class FeaturesControllerTest < ActionController::TestCase
   end
 
   def test_show
-    get :show, :id => Features.first
+    get :show, :id => Feature.first
     assert_template 'show'
   end
 
@@ -17,38 +17,38 @@ class FeaturesControllerTest < ActionController::TestCase
   end
 
   def test_create_invalid
-    Features.any_instance.stubs(:valid?).returns(false)
+    Feature.any_instance.stubs(:valid?).returns(false)
     post :create
     assert_template 'new'
   end
 
   def test_create_valid
-    Features.any_instance.stubs(:valid?).returns(true)
+    Feature.any_instance.stubs(:valid?).returns(true)
     post :create
     assert_redirected_to features_url(assigns(:features))
   end
 
   def test_edit
-    get :edit, :id => Features.first
+    get :edit, :id => Feature.first
     assert_template 'edit'
   end
 
   def test_update_invalid
-    Features.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => Features.first
+    Feature.any_instance.stubs(:valid?).returns(false)
+    put :update, :id => Feature.first
     assert_template 'edit'
   end
 
   def test_update_valid
-    Features.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => Features.first
+    Feature.any_instance.stubs(:valid?).returns(true)
+    put :update, :id => Feature.first
     assert_redirected_to features_url(assigns(:features))
   end
 
   def test_destroy
-    features = Features.first
+    features = Feature.first
     delete :destroy, :id => features
     assert_redirected_to features_url
-    assert !Features.exists?(features.id)
+    assert !Feature.exists?(features.id)
   end
 end

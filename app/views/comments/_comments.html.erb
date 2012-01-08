@@ -1,3 +1,11 @@
-<% @comments.each do |comment| %>
-    <p class="comment"><%= comment.comment %></p>
-<% end %>
+<h3>Kommentare</h3>
+<div id="comments">
+  <div id="comments_list">
+    <% @comments.each do |comment| %>
+        <p class="comment"><%= comment.comment %></p>
+    <% end %>
+  </div>
+  <div id="comment_new">
+    <%= render :partial => 'comments/form' %>
+  </div>
+</div>

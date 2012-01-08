@@ -1,4 +1,4 @@
-<% title "Products" %>
+<% title "Product" %>
 
 <table>
   <tr>
@@ -10,10 +10,10 @@
       <td><%= products.sID %></td>
       <td><%= products.name %></td>
       <td><%= link_to "Show", products %></td>
-      <td><%= link_to "Edit", edit_products_path(products) %></td>
+      <td><%= link_to "Edit", edit_product_path(products) %></td>
       <td><%= link_to "Destroy", products, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Products", new_products_path %></p>
+<p><%= link_to "New Product", new_product_path %></p>

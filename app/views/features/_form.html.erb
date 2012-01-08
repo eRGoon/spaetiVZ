@@ -1,12 +1,9 @@
-<%= form_for @features do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <%= f.label :sID %><br />
-    <%= f.number_field :sID %>
-  </p>
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p><%= f.submit %></p>
+<%= form_for(@feature, :remote => true) do |f| %>
+    <p>
+      <%= f.number_field :sID %>
+    </p>
+    <%= f.label :name, "neues Feature:" %>
+    <p>
+      <%= f.text_field :name %>
+    </p>
 <% end %>

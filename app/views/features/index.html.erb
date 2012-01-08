@@ -1,4 +1,4 @@
-<% title "Features" %>
+<% title "Feature" %>
 
 <table>
   <tr>
@@ -10,10 +10,10 @@
       <td><%= features.sID %></td>
       <td><%= features.name %></td>
       <td><%= link_to "Show", features %></td>
-      <td><%= link_to "Edit", edit_features_path(features) %></td>
+      <td><%= link_to "Edit", edit_feature_path(features) %></td>
       <td><%= link_to "Destroy", features, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
 
-<p><%= link_to "New Features", new_features_path %></p>
+<p><%= link_to "New Feature", new_feature_path %></p>

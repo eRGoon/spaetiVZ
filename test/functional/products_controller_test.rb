@@ -7,7 +7,7 @@ class ProductsControllerTest < ActionController::TestCase
   end
 
   def test_show
-    get :show, :id => Products.first
+    get :show, :id => Product.first
     assert_template 'show'
   end
 
@@ -17,38 +17,38 @@ class ProductsControllerTest < ActionController::TestCase
   end
 
   def test_create_invalid
-    Products.any_instance.stubs(:valid?).returns(false)
+    Product.any_instance.stubs(:valid?).returns(false)
     post :create
     assert_template 'new'
   end
 
   def test_create_valid
-    Products.any_instance.stubs(:valid?).returns(true)
+    Product.any_instance.stubs(:valid?).returns(true)
     post :create
     assert_redirected_to products_url(assigns(:products))
   end
 
   def test_edit
-    get :edit, :id => Products.first
+    get :edit, :id => Product.first
     assert_template 'edit'
   end
 
   def test_update_invalid
-    Products.any_instance.stubs(:valid?).returns(false)
-    put :update, :id => Products.first
+    Product.any_instance.stubs(:valid?).returns(false)
+    put :update, :id => Product.first
     assert_template 'edit'
   end
 
   def test_update_valid
-    Products.any_instance.stubs(:valid?).returns(true)
-    put :update, :id => Products.first
+    Product.any_instance.stubs(:valid?).returns(true)
+    put :update, :id => Product.first
     assert_redirected_to products_url(assigns(:products))
   end
 
   def test_destroy
-    products = Products.first
+    products = Product.first
     delete :destroy, :id => products
     assert_redirected_to products_url
-    assert !Products.exists?(products.id)
+    assert !Product.exists?(products.id)
   end
 end

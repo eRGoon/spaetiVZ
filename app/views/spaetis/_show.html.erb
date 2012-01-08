@@ -1,10 +1,12 @@
 <% unless @spaeti.nil? %>
-    <div id="spaeti">
+    <header>
       <h2><%= @spaeti.name %></h2>
 
       <div id="rate">
         <%= render :partial => 'rates/form' %>
       </div>
+    </header>
+    <div id="spaeti">
       <p>
         <%= @spaeti.street %> <%= @spaeti.number %>
       </p>
@@ -22,14 +24,10 @@
       </p>
     </div>
     <% unless @spaeti.id.nil? %>
-        <h2>Kommentare</h2>
-        <div id="comments">
-          <div id="comments_list">
-            <%= render :partial => 'comments/comments' %>
-          </div>
-          <div id="comment_new">
-            <%= render :partial => 'comments/form' %>
-          </div>
+        <div id="features">
+          <%= render :partial => 'features/features' %>
         </div>
+        <div class="clearfix"></div>
+        <%= render :partial => 'comments/comments' %>
     <% end %>
 <% end %>
