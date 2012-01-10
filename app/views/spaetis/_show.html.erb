@@ -1,33 +1,43 @@
 <% unless @spaeti.nil? %>
-    <header>
-      <h2><%= @spaeti.name %></h2>
+    <div class="details active">
+      <header>
+        <h2><%= @spaeti.name %></h2>
 
-      <div id="rate">
-        <%= render :partial => 'rates/form' %>
-      </div>
-    </header>
-    <div id="spaeti">
-      <p>
-        <%= @spaeti.street %> <%= @spaeti.number %>
-      </p>
-
-      <p>
-        <%= @spaeti.postal %> <%= @spaeti.city %>
-        <% unless @spaeti.district.nil? %> -
-            <% end %><%= @spaeti.district %>
-      </p>
-
-      <p>
-        <% unless @spaeti.open.nil? %>
-            <b>ge&ouml;ffnet bis: </b><%= @spaeti.open %>
-        <% end %>
-      </p>
-    </div>
-    <% unless @spaeti.id.nil? %>
-        <div id="features">
-          <%= render :partial => 'features/features' %>
+        <div id="rate">
+          <%= render :partial => 'rates/form' %>
         </div>
-        <div class="clearfix"></div>
-        <%= render :partial => 'comments/comments' %>
-    <% end %>
+        <div class="commands">
+          <%= link_to "", edit_spaeti_path(@spaeti), :remote => true, :class => "rp edit", :title => "Bearbeiten" %>
+          <%= link_to "", @spaeti, :remote => true, :confirm => 'Diesen Spätkauf löschen?', :method => :delete, :class => "rp del", :title => "Löschen" %>
+        </div>
+      </header>
+      <div id="spaeti">
+        <p>
+          <%= @spaeti.street %> <%= @spaeti.number %>
+        </p>
+
+        <p>
+          <%= @spaeti.postal %> <%= @spaeti.city %>
+          <% unless @spaeti.district.nil? %> -
+              <% end %><%= @spaeti.district %>
+        </p>
+
+        <p>
+          <% unless @spaeti.open.nil? %>
+              <b>ge&ouml;ffnet bis: </b><%= @spaeti.open %>
+          <% end %>
+        </p>
+      </div>
+      <% unless @spaeti.id.nil? %>
+          <div id="features">
+            <%= render :partial => 'spaeti_features/features' %>
+          </div>
+          <div class="clearfix"></div>
+          <h3>Kommentare</h3>
+
+          <div id="comments">
+            <%= render :partial => 'comments/comments' %>
+          </div>
+      <% end %>
+    </div>
 <% end %>

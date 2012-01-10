@@ -18,6 +18,8 @@ class CommentsController < ApplicationController
     if @comment.save
       flash[:notice] = "Kommentar erstellt."
       @comments = Comment.find(:all, :conditions => {:sID => _sID})
+      @comment = Comment.new
+      @spaeti = Spaeti.find(params[:sID])
     end
   end
 

@@ -1,0 +1,12 @@
+<%= form_for @spaeti_product do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :spaeti_id %><br />
+    <%= f.number_field :spaeti_id %>
+  </p>
+  <p>
+    <%= f.label :product_id %><br />
+    <%= f.number_field :product_id %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

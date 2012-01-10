@@ -8,11 +8,12 @@ $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
 $("#flash_notice").show(300).delay(3000).hide(200);
 $("section#list").html("<%= escape_javascript( render(:partial => "spaetis") ) %>");
 
-var rpL = $("a.rp");
+var rpL = $("section#list a.rp");
 
 rpL.each(function() {
     var link = this;
     var action = $(this).attr("class").split(" ")[1];
+    alert(action);
     var rp = Raphael(link, 30, 30), ic;
 
     if (action == "edit") {

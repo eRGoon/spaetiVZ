@@ -1,0 +1,7 @@
+<% if @spaeti_features.count > 0 %>
+    <ul>
+      <% @spaeti_features.each do |feature| %>
+          <li class="feature"><%= feature.name %></li>
+      <% end %>
+    </ul>
+<% end %>

@@ -30,7 +30,7 @@ $("form.new_spaeti :input:not(input[type=submit])").val("");
 /*Replace the html of the div spaeti_list with the updated new one*/
 $("section#list").html("<%= escape_javascript( render(:partial => "spaetis") ) %>");
 
-var rpL = $("a.rp");
+var rpL = $("section#list a.rp");
 
 rpL.each(function() {
     var link = this;

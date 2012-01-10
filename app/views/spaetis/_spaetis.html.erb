@@ -3,9 +3,5 @@
       <div class="info">
         <%= link_to spaeti.name, spaeti, :remote => true %>
       </div>
-      <div class="commands">
-        <%= link_to "", edit_spaeti_path(spaeti), :remote => true, :class => "rp edit" %>
-        <%= link_to "", spaeti, :remote => true, :confirm => 'Diesen Spätkauf löschen?', :method => :delete, :class => "rp del"  %>
-      </div>
     </div>
 <% end %>

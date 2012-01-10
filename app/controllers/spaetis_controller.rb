@@ -24,6 +24,7 @@ class SpaetisController < ApplicationController
       @spaetis = Spaeti.all
       @rate = Rate.new({:sID => @spaeti.id, :points => 0, :ratings => 0})
       @rate.save
+      @spaeti_features = @spaeti.features
       # TODO check params for features and products, delete or add them
       flash[:notice] = "Spaetkauf erstellt."
     end
@@ -31,7 +32,9 @@ class SpaetisController < ApplicationController
 
   def edit
     @spaeti = Spaeti.find(params[:id])
-    @features = Feature.find(:all, :select => "DISTINCT name")
+    @rate = Rate.find(:all, :conditions => {:sID => @spaeti.id})[0]
+    @features = Feature.all
+    @associated_features = @spaeti.features
     @feature = Feature.new({:sID => @spaeti.id})
     @products = Product.find(:all, :select => "DISTINCT name")
     @product = Product.new({:sID => @spaeti.id})
@@ -42,7 +45,7 @@ class SpaetisController < ApplicationController
     @comments = Comment.find(:all, :conditions => {:sID => @spaeti.id})
     @comment = Comment.new
     @rate = Rate.find(:all, :conditions => {:sID => @spaeti.id})[0]
-    @features = Feature.find(:all, :conditions => {:sID => @spaeti.id})
+    @spaeti_features = @spaeti.features
     @products = Product.find(:all, :conditions => {:sID => @spaeti.id})
   end
 

@@ -19,5 +19,5 @@
   $("form#new_comment textarea").val("");
 
   /*Replace the html of the div spaeti_list with the updated new one*/
-  $("div#comments_list").html("<%= escape_javascript( render(:partial => 'comments') ) %>");
+  $("div#comments").html("<%= escape_javascript( render(:partial => 'comments') ) %>");
 <% end -%>

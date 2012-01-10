@@ -1,24 +1,39 @@
 <% unless @spaeti.nil? %>
-<%= form_for(@spaeti, :remote => true) do |f| %>
-    <%= f.label :name, "Name" %>
-    <p>
-      <%= f.text_field :name %>
-    </p>
-    <%= f.label :street, "Straße" %> / <%= f.label :number, "Hausnummer" %>
-    <p>
-      <%= f.text_field :street %><%= f.text_field :number, :size => 3 %>
-    </p>
-    <%= f.label :postal, "PLZ" %> / <%= f.label :city, "Stadt" %> / <%= f.label :district, "Bezirk" %>
-    <p>
-      <%= f.text_field :postal, :size => 5 %><%= f.text_field :city %><%= f.text_field :district, :size => 19 %>
-    </p>
-    <%= f.label :open, "geöffnet bis" %>
-    <p>
-      <%= f.text_field :open %>
-    </p>
-    <%= render :partial => 'features/features' %>
-    <%= render :partial => 'features/form' %>
-    <p><%= f.submit "Speichern" %></p>
-    <div id= "spaeti_errors"></div>
-<% end %>
+    <div class="edit">
+      <header>
+        <h2><%= @spaeti.name %></h2>
+
+        <div id="rate">
+          <%= render :partial => 'rates/form' %>
+        </div>
+        <div class="commands">
+          <%= link_to "", @spaeti, :remote => true, :class => "rp save", :title => "Speichern" %>
+          <%= link_to "", @spaeti, :remote => true, :class => "rp cancel", :title => "Abbrechen" %>
+        </div>
+      </header>
+      <%= form_for(@spaeti, :remote => true) do |f| %>
+          <%= f.label :name, "Name" %>
+          <p>
+            <%= f.text_field :name %>
+          </p>
+          <%= f.label :street, "Straße" %> / <%= f.label :number, "Hausnummer" %>
+          <p>
+            <%= f.text_field :street %><%= f.text_field :number, :size => 3 %>
+          </p>
+          <%= f.label :postal, "PLZ" %> / <%= f.label :city, "Stadt" %> / <%= f.label :district, "Bezirk" %>
+          <p>
+            <%= f.text_field :postal, :size => 5 %><%= f.text_field :city %><%= f.text_field :district, :size => 19 %>
+          </p>
+          <%= f.label :open, "geöffnet bis" %>
+          <p>
+            <%= f.text_field :open %>
+          </p>
+
+          <div id="spaeti_errors"></div>
+      <% end %>
+      <div id="features">
+        <%= render :partial => 'features/features' %>
+      </div>
+      <div class="clearfix"></div>
+    </div>
 <% end %>

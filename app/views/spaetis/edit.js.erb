@@ -5,18 +5,63 @@
  * Time: 19:32
  * To change this template use File | Settings | File Templates.
  */
-$("section#detail div.edit").html("<%= escape_javascript(render(:partial => 'form'))%>");
-if (!$("section#detail div.edit").hasClass("active")) {
-    $("section#detail div.active").animate({
-        height: 'toggle'
-    }, 300, function() {
-        $("section#detail div.active").hide();
-        $("section#detail div.edit").show();
-        $("section#detail div.edit").animate({
-            height: $("section#detail div.edit").height()
-        }, 300, function() {
-            $("section#detail div.active").removeClass("active");
-            $("section#detail div.edit").addClass("active");
-        });
+$("section#detail").html("<%= escape_javascript(render(:partial => 'form'))%>");
+var rpL = $("section#detail div.commands a.rp");
+
+rpL.each(function() {
+    var link = this;
+    var action = $(this).attr("class").split(" ")[1];
+    var rp = Raphael(link, 28, 25), ic;
+
+    if (action == "save") {
+        ic = rp.path("M2.379,14.729 5.208,11.899 12.958,19.648 25.877,6.733 28.707,9.561 12.958,25.308z");
+        ic.attr({fill: "#00A336", stroke: "none"});
+        ic.scale(.8);
+    } else if (action == "cancel") {
+        ic = rp.path("M24.778,21.419L19.276,15.917L24.777,10.415L21.949,7.585L16.447,13.087L10.945,7.585L8.117,10.415L13.618,15.917L8.116,21.419L10.946,24.248L16.447,18.746L21.948,24.248Z");
+        ic.attr({fill: "#dd4b39", stroke: "none"});
+        ic.scale(.9);
+    } else return false;
+});
+
+var rpR = $("section#detail div.edit header div#rate span.rp");
+
+rpR.each(function() {
+    var rate = this;
+    var active = $(this).attr("class").split(" ")[3];
+    var currRate = $(this).attr("class").split(" ")[2];
+    var rp = Raphael(rate, 28, 25), ic;
+
+    if (active == "true") {
+        ic = rp.path("M16,22.375L7.116,28.83l3.396-10.438l-8.883-6.458l10.979,0.002L16.002,1.5l3.391,10.434h10.981l-8.886,6.457l3.396,10.439L16,22.375L16,22.375z");
+    } else if (active == "false") {
+        ic = rp.path("M16,22.375L7.116,28.83l3.396-10.438l-8.883-6.458l10.979,0.002L16.002,1.5l3.391,10.434h10.981l-8.886,6.457l3.396,10.439L16,22.375L16,22.375zM22.979,26.209l-2.664-8.205l6.979-5.062h-8.627L16,4.729l-2.666,8.206H4.708l6.979,5.07l-2.666,8.203L16,21.146L22.979,26.209L22.979,26.209z");
+    } else return false;
+
+    ic.attr({fill: "#4f85bb", stroke: "#333333"});
+    ic.scale(.7);
+});
+
+var features = $("div#features li");
+
+features.each(function() {
+    var id = $(this).data("id"), sID = $(this).data("sid"), fID = $(this).data("fid");
+
+    $(this).click(function() {
+        if ($(this).hasClass("chosen")) {
+            $.post("/spaeti_features/" + id, { _method: 'delete' }, null, "script");
+        } else {
+            $.ajax({
+                async:true,
+                type: "POST",
+                url: ("/spaeti_features"),
+                data: {"spaeti": sID, "feature": fID},
+                dataType: "script"
+            });
+        }
+
+        $(this).toggleClass("chosen");
+
+        return false;
     });
-}
+});

@@ -1,5 +1,3 @@
-<h3>Kommentare</h3>
-<div id="comments">
   <div id="comments_list">
     <% @comments.each do |comment| %>
         <p class="comment"><%= comment.comment %></p>
@@ -8,4 +6,3 @@
   <div id="comment_new">
     <%= render :partial => 'comments/form' %>
   </div>
-</div>

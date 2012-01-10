@@ -1,7 +1,12 @@
 <% if @features.count > 0 %>
     <ul>
-        <% @features.each do |feature| %>
-            <li class="feature"><%= feature.name %></li>
-        <% end %>
+      <% @features.each do |feature| %>
+          <% if @associated_features.include?(feature) %>
+              <% spaeti_feature = SpaetiFeature.find(:all, :conditions => {:spaeti_id => @spaeti.id, :feature_id => feature.id})[0] %>
+              <li class="feature chosen" data-id="<%= spaeti_feature.id %>"><%= feature.name %></li>
+          <% else %>
+              <li class="feature" data-sid="<%= @spaeti.id %>" data-fid="<%= feature.id %>"><%= feature.name %></li>
+          <% end %>
+      <% end %>
     </ul>
 <% end %>

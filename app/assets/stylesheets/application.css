@@ -224,42 +224,42 @@ section#list div.item div.info a {
     display: block;
     font-size: 24px;
 }
-section#list div.item div.commands {
-    display: none;
-    position: absolute;
-    right: 5px;
-    top: 8px;
-    line-height: 28px;
-    z-index: 10;
-}
-section#list div.item div.commands a {
-    opacity: 0.55;
-}
-section#list div.item:hover div.commands {
-    display: block;
-}
-section#list div.item div.commands a:hover {
-    opacity: 1;
-}
 section#detail {
     min-width: 500px;
-    padding-left: 0;
-    padding-top: 10px;
+    margin: 12px 0 15px;
 }
-section#detail div.details header {
+section#detail div.commands {
+    display: inline-block;
+    padding-top: 5px;
+    float: right;
+}
+section#detail div.commands a {
+    opacity: 0.55;
+}
+section#detail div.commands a:hover {
+    opacity: 1;
+}
+section#detail div.details, section#detail div.edit, section#detail div.new {
+    padding: 0 10px 10px 10px;
+    -moz-box-shadow: 3px 0px 6px -3px #000000;
+    -webkit-box-shadow: 3px 0px 6px -3px #000000;
+    box-shadow: 3px 0px 6px -3px #000000;
+}
+section#detail div header {
     height: auto;
+    margin-bottom: 10px;
 }
-section#detail div.details header h2 {
+section#detail div header h2 {
     display: inline;
     margin-right: 15px;
 }
-section#detail div.details header div#rate {
+section#detail div header div#rate {
     display: inline;
 }
 section#detail div.details header div#rate span.rate {
     cursor: pointer;
 }
-section#detail div.details header div#rate span.rates {
+section#detail div header div#rate span.rates {
     background: #cccccc;
     padding: 3px;
     font-size: 10px;
@@ -296,12 +296,25 @@ section#detail div.details div#features > ul > li {
     color: #4f85bb;
     cursor: pointer;
 }
+section#detail div.edit div#features > ul > li {
+    padding: 2px 5px;
+    margin:  2px 2px;
+    float: left;
+    font-size: 10px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+section#detail div.edit div#features > ul > li.chosen {
+    background: #dddddd;
+    border: 1px solid;
+    border-color: #4f85bb;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    color: #4f85bb;
+}
 section#detail > div p {
     padding: 3px 5px 5px 0px;
-}
-section#detail > div.new, section#detail > div.edit {
-    height: 0;
-    display: none;
 }
 section#detail div#comments {
 	background-color: #4d4d4d;

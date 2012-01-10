@@ -1,0 +1,19 @@
+<% title "Spaeti Products" %>
+
+<table>
+  <tr>
+    <th>Spaeti</th>
+    <th>Product</th>
+  </tr>
+  <% for spaeti_product in @spaeti_products %>
+    <tr>
+      <td><%= spaeti_product.spaeti_id %></td>
+      <td><%= spaeti_product.product_id %></td>
+      <td><%= link_to "Show", spaeti_product %></td>
+      <td><%= link_to "Edit", edit_spaeti_product_path(spaeti_product) %></td>
+      <td><%= link_to "Destroy", spaeti_product, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Spaeti Product", new_spaeti_product_path %></p>
