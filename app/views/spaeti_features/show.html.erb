@@ -1,0 +1,16 @@
+<% title "Spaeti Feature" %>
+
+<p>
+  <strong>Spaeti:</strong>
+  <%= @spaeti_feature.spaeti_id %>
+</p>
+<p>
+  <strong>Feature:</strong>
+  <%= @spaeti_feature.feature_id %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_spaeti_feature_path(@spaeti_feature) %> |
+  <%= link_to "Destroy", @spaeti_feature, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", spaeti_features_path %>
+</p>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111224095637) do
+ActiveRecord::Schema.define(:version => 20120110114441) do
 
   create_table "comments", :force => true do |t|
     t.integer  "sID"
@@ -38,6 +38,13 @@ ActiveRecord::Schema.define(:version => 20111224095637) do
     t.integer  "sID"
     t.integer  "points"
     t.integer  "ratings"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spaeti_features", :force => true do |t|
+    t.integer  "spaeti_id"
+    t.integer  "feature_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

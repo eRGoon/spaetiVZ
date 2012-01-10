@@ -1,0 +1,19 @@
+<% title "Spaeti Features" %>
+
+<table>
+  <tr>
+    <th>Spaeti</th>
+    <th>Feature</th>
+  </tr>
+  <% for spaeti_feature in @spaeti_features %>
+    <tr>
+      <td><%= spaeti_feature.spaeti_id %></td>
+      <td><%= spaeti_feature.feature_id %></td>
+      <td><%= link_to "Show", spaeti_feature %></td>
+      <td><%= link_to "Edit", edit_spaeti_feature_path(spaeti_feature) %></td>
+      <td><%= link_to "Destroy", spaeti_feature, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Spaeti Feature", new_spaeti_feature_path %></p>
