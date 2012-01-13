@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120110123319) do
+ActiveRecord::Schema.define(:version => 20120113153607) do
 
   create_table "comments", :force => true do |t|
     t.integer  "sID"
@@ -66,6 +66,9 @@ ActiveRecord::Schema.define(:version => 20120110123319) do
     t.string   "open"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.boolean  "gmaps"
   end
 
 end

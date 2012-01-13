@@ -4,6 +4,7 @@ class SpaetisController < ApplicationController
   def load
     @spaetis = Spaeti.all
     @spaeti = Spaeti.new
+    @jsn = Spaeti.all.to_gmaps4rails
     @features = Feature.find(:all, :select => "DISTINCT name")
     @feature = Feature.new({:sID => @spaeti.id})
     @products = Product.find(:all, :select => "DISTINCT name")
@@ -42,6 +43,7 @@ class SpaetisController < ApplicationController
 
   def show
     @spaeti = Spaeti.find(params[:id])
+    @coords = Spaeti.find(params[:id]).to_gmaps4rails
     @comments = Comment.find(:all, :conditions => {:sID => @spaeti.id})
     @comment = Comment.new
     @rate = Rate.find(:all, :conditions => {:sID => @spaeti.id})[0]
