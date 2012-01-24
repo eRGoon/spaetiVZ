@@ -1,7 +1,6 @@
 class CreateFeatures < ActiveRecord::Migration
   def self.up
     create_table :features do |t|
-      t.integer :sID
       t.string :name
       t.timestamps
     end
