@@ -10,6 +10,7 @@
           <%= link_to "", edit_spaeti_path(@spaeti), :remote => true, :class => "rp edit", :title => "Bearbeiten" %>
           <%= link_to "", @spaeti, :remote => true, :confirm => 'Diesen Spätkauf löschen?', :method => :delete, :class => "rp del", :title => "Löschen" %>
         </div>
+        <div class="clearfix"></div>
       </header>
       <div id="spaeti">
         <p>
@@ -32,7 +33,13 @@
           <div id="features">
             <%= render :partial => 'spaeti_features/features' %>
           </div>
+          <div id="products">
+            <%= render :partial => 'spaeti_products/products' %>
+          </div>
           <div class="clearfix"></div>
+          <div id="gmap">
+            <%= render :partial => 'map' %>
+          </div>
           <h3>Kommentare</h3>
 
           <div id="comments">

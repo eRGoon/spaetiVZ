@@ -3,6 +3,8 @@ class Spaeti < ActiveRecord::Base
   validates_presence_of :name, :street, :number, :postal, :city
   has_many :spaeti_features
   has_many :features, :through => :spaeti_features
+  has_many :spaeti_products
+  has_many :products, :through => :spaeti_products
   acts_as_gmappable
 
   def gmaps4rails_address

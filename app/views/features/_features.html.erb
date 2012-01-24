@@ -1,3 +1,4 @@
+<h3>Features</h3>
 <% if @features.count > 0 %>
     <ul>
       <% @features.each do |feature| %>
@@ -9,4 +10,12 @@
           <% end %>
       <% end %>
     </ul>
+    <div class="clearfix"></div>
 <% end %>
+<form class="features_new">
+  <label for="features_new">Neue Features</label>
+
+  <p>
+    <input id="features_new" size="45" type="text">
+  </p>
+</form>

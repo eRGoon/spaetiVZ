@@ -1,0 +1,21 @@
+<h3>Produkte</h3>
+<% if @products.count > 0 %>
+    <ul>
+      <% @products.each do |product| %>
+          <% if @associated_products.include?(product) %>
+              <% spaeti_product = SpaetiProduct.find(:all, :conditions => {:spaeti_id => @spaeti.id, :product_id => product.id})[0] %>
+              <li class="product chosen" data-id="<%= spaeti_product.id %>"><%= product.name %></li>
+          <% else %>
+              <li class="product" data-sid="<%= @spaeti.id %>" data-pid="<%= product.id %>"><%= product.name %></li>
+          <% end %>
+      <% end %>
+    </ul>
+    <div class="clearfix"></div>
+<% end %>
+<form class="products_new">
+  <label for="products_new">Neue Produkte</label>
+
+  <p>
+    <input id="products_new" size="45" type="text">
+  </p>
+</form>

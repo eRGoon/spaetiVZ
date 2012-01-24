@@ -3,21 +3,19 @@ class SpaetisController < ApplicationController
 
   def load
     @spaetis = Spaeti.all
-    @spaeti = Spaeti.new
-    @jsn = Spaeti.all.to_gmaps4rails
-    @features = Feature.find(:all, :select => "DISTINCT name")
-    @feature = Feature.new({:sID => @spaeti.id})
-    @products = Product.find(:all, :select => "DISTINCT name")
-    @product = Product.new({:sID => @spaeti.id})
   end
 
   def index
     @spaetis = Spaeti.search(params[:search]) if params[:search]
   end
 
-  #def new
-    #@spaeti = Spaeti.new
-  #end
+  def new
+    @spaeti = Spaeti.new
+    @features = Feature.all
+    @associated_features = @spaeti.features
+    @products = Product.all
+    @associated_products = @spaeti.products
+  end
 
   def create
     @spaeti = Spaeti.new(params[:spaeti])
@@ -26,7 +24,6 @@ class SpaetisController < ApplicationController
       @rate = Rate.new({:sID => @spaeti.id, :points => 0, :ratings => 0})
       @rate.save
       @spaeti_features = @spaeti.features
-      # TODO check params for features and products, delete or add them
       flash[:notice] = "Spaetkauf erstellt."
     end
   end
@@ -36,9 +33,8 @@ class SpaetisController < ApplicationController
     @rate = Rate.find(:all, :conditions => {:sID => @spaeti.id})[0]
     @features = Feature.all
     @associated_features = @spaeti.features
-    @feature = Feature.new({:sID => @spaeti.id})
-    @products = Product.find(:all, :select => "DISTINCT name")
-    @product = Product.new({:sID => @spaeti.id})
+    @products = Product.all
+    @associated_products = @spaeti.products
   end
 
   def show
@@ -48,7 +44,7 @@ class SpaetisController < ApplicationController
     @comment = Comment.new
     @rate = Rate.find(:all, :conditions => {:sID => @spaeti.id})[0]
     @spaeti_features = @spaeti.features
-    @products = Product.find(:all, :conditions => {:sID => @spaeti.id})
+    @spaeti_products = @spaeti.products
   end
 
   def update

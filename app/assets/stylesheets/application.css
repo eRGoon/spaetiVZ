@@ -12,6 +12,7 @@
 
 html {
     background: #ffffff;
+    overflow: hidden;
 }
 
 body {
@@ -21,6 +22,7 @@ body {
 	background-color: rgba(242, 242, 242, 1);
 	color: #4d4d4d;
 	color: rgba(77, 77, 77, 1);
+    overflow: hidden;
 }
 
 a {
@@ -145,16 +147,33 @@ form.search input[type="submit"] {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4f85bb', endColorstr='#4f85bb',GradientType=0 ); /* IE6-9 */
 }
 
-header {
-    height: 120px;
+#container > header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    z-index: 10;
+    border-bottom: 1px solid #ffffff;
+    background: #a7c7dc; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+    background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2E3YzdkYyIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiM4NWIyZDMiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+    background: -moz-linear-gradient(top, #a7c7dc 0%, #85b2d3 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#a7c7dc), color-stop(100%,#85b2d3)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #a7c7dc 0%,#85b2d3 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #a7c7dc 0%,#85b2d3 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #a7c7dc 0%,#85b2d3 100%); /* IE10+ */
+    background: linear-gradient(top, #a7c7dc 0%,#85b2d3 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7c7dc', endColorstr='#85b2d3',GradientType=0 ); /* IE6-8 */
 }
-header div#search {
+#container > header div#search {
     height: 55px;
     padding-top: 25px;
     margin-left: 20px;
 }
-header a.new {
+#container > header a.new {
     position: absolute;
+    top: 65px;
     right: 20px;
     margin:  0 15px;
 }
@@ -199,35 +218,57 @@ div#spaeti_errors, div#newspaeti_errors {
 }
 
 div#content {
+    overflow: hidden;
+    margin-top: 100px;
 	background-color: #ffffff;
-	background-color: rgba(255, 255, 255, 1);
+    border-top: 1px solid #000000;
 }
 
 section {
+    overflow: auto;
     display: inline-block;
     padding:  15px;
+    margin: 15px 0 15px;
 }
 section#list {
     width: 630px;
+    padding-top: 0;
     float: left;
 }
 section#list div.item {
     position: relative;
     padding: 8px 5px;
     margin:  12px 0;
+    z-index: 0;
     border: 1px solid;
     border-color: rgba(0, 0, 0, 0.3);
+	background-color: #ffffff;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
 }
-section#list div.item div.info a {
+section#list div.item div.name {
+    position: relative;
+    z-index: 1;
+}
+section#list div.item div.info {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: -10px;
+    z-index: 0;
+    color: #666666;
+}
+section#list div.item div.name a {
     display: block;
     font-size: 24px;
+    color: #404040;
 }
 section#detail {
+    padding-bottom: 0;
     min-width: 500px;
-    margin: 12px 0 15px;
 }
 section#detail div.commands {
     display: inline-block;
@@ -245,6 +286,10 @@ section#detail div.details, section#detail div.edit, section#detail div.new {
     -moz-box-shadow: 3px 0px 6px -3px #000000;
     -webkit-box-shadow: 3px 0px 6px -3px #000000;
     box-shadow: 3px 0px 6px -3px #000000;
+	background-color: #eeeeee;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    border-color: rgba(0, 0, 0, 0.1);
 }
 section#detail div header {
     height: auto;
@@ -274,12 +319,11 @@ section#detail div header div#rate span.rates {
 section#detail div.details div#spaeti {
     float: left;
 }
-section#detail div.details div#features {
-    max-width: 200px;
-    text-align: right;
+section#detail div.details div#features, section#detail div.details div#products {
+    max-width: 130px;
     float: right;
 }
-section#detail div.details div#features > ul {
+section#detail div.details div#features > ul, section#detail div.details div#products > ul {
     text-align: right;
 }
 section#detail div.details div#features > ul > li {
@@ -297,15 +341,43 @@ section#detail div.details div#features > ul > li {
     color: #4f85bb;
     cursor: pointer;
 }
-section#detail div.edit div#features > ul > li {
+section#detail div.details div#products > ul > li {
+    padding: 2px 5px;
+    margin:  2px 2px;
+    text-align: right;
+    float: right;
+    background: #eeeeee;
+    font-size: 10px;
+    border: 1px solid;
+    border-color: #5cbb4f;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    color: #5cbb4f;
+    cursor: pointer;
+}
+section#detail div.details div#gmap {
+    height: 250px;
+    margin: 10px 0 15px;
+    border: 1px solid;
+    border-color: rgba(0, 0, 0, 0.3);
+}
+section#detail div.edit div#features, section#detail div.edit div#products, section#detail div.new div#features, section#detail div.new div#products {
+    max-width: 450px;
+}
+section#detail div.edit div#features > ul > li, section#detail div.new div#features > ul > li {
     padding: 2px 5px;
     margin:  2px 2px;
     float: left;
     font-size: 10px;
     cursor: pointer;
-    border: 1px solid transparent;
+    border: 1px solid;
+    border-color: #4f85bb;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
 }
-section#detail div.edit div#features > ul > li.chosen {
+section#detail div.edit div#features > ul > li.chosen, section#detail div.new div#features > ul > li.chosen {
     background: #dddddd;
     border: 1px solid;
     border-color: #4f85bb;
@@ -313,6 +385,27 @@ section#detail div.edit div#features > ul > li.chosen {
     -moz-border-radius: 10px;
     border-radius: 10px;
     color: #4f85bb;
+}
+section#detail div.edit div#products > ul > li, section#detail div.new div#products > ul > li {
+    padding: 2px 5px;
+    margin:  2px 2px;
+    float: left;
+    font-size: 10px;
+    cursor: pointer;
+    border: 1px solid;
+    border-color: #5cbb4f;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+section#detail div.edit div#products > ul > li.chosen, section#detail div.new div#products > ul > li.chosen {
+    background: #eeeeee;
+    border: 1px solid;
+    border-color: #5cbb4f;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    color: #5cbb4f;
 }
 section#detail > div p {
     padding: 3px 5px 5px 0px;

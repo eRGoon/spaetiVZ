@@ -1,0 +1,29 @@
+<script type="text/javascript">
+//@ sourceURL=mapSpaeti.js
+var address = [];
+address.push("<%= @spaeti.latitude %>");
+address.push("<%= @spaeti.longitude %>");
+
+
+function renderMap(address) {
+    var options = {
+        zoom: 14,
+        scrollwheel: false,
+        disableDefaultUI: true,
+        navigationControl: true,
+        mapTypeControl: true,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    var gmap = new google.maps.Map(document.getElementById("gmap"),options);
+    var position = new google.maps.LatLng(parseFloat(address[0]),parseFloat(address[1]));
+    var markerOptions = {
+        map: gmap,
+        position: position
+    };
+    new google.maps.Marker(markerOptions);
+
+    gmap.setCenter(position);
+}
+
+renderMap(address);
+</script>

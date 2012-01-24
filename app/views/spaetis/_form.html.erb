@@ -10,6 +10,7 @@
           <%= link_to "", @spaeti, :remote => true, :class => "rp save", :title => "Speichern" %>
           <%= link_to "", @spaeti, :remote => true, :class => "rp cancel", :title => "Abbrechen" %>
         </div>
+        <div class="clearfix"></div>
       </header>
       <%= form_for(@spaeti, :remote => true) do |f| %>
           <%= f.label :name, "Name" %>
@@ -33,6 +34,10 @@
       <% end %>
       <div id="features">
         <%= render :partial => 'features/features' %>
+      </div>
+      <div class="clearfix"></div>
+      <div id="products">
+        <%= render :partial => 'products/products' %>
       </div>
       <div class="clearfix"></div>
     </div>

@@ -1,7 +1,10 @@
 <% @spaetis.each do |spaeti| %>
     <div class="item">
-      <div class="info">
+      <div class="name">
         <%= link_to spaeti.name, spaeti, :remote => true %>
       </div>
+        <div class="info">
+          <%= spaeti.street %> <%= spaeti.number %>, <%= spaeti.postal %> <%= spaeti.city %>
+        </div>
     </div>
 <% end %>

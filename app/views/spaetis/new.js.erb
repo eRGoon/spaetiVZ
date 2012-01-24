@@ -1,0 +1,43 @@
+/**
+ * Created by JetBrains RubyMine.
+ * User: ronny
+ * Date: 04.12.11
+ * Time: 19:32
+ * To change this template use File | Settings | File Templates.
+ */
+//@ sourceURL=newSpaeti.js
+$("section#detail").html("<%= escape_javascript(render(:partial => 'formnew'))%>");
+
+var rpL = $("section#detail div.commands a.rp");
+
+rpL.each(function() {
+    var link = this;
+    var action = $(this).attr("class").split(" ")[1];
+    var rp = Raphael(link, 28, 25), ic;
+
+    if (action == "save") {
+        ic = rp.path("M2.379,14.729 5.208,11.899 12.958,19.648 25.877,6.733 28.707,9.561 12.958,25.308z");
+        ic.attr({fill: "#00A336", stroke: "none"});
+        ic.scale(.8);
+
+        $(this).click(function() {
+            $.rails.handleRemote($("form.new_spaeti"));
+        });
+    } else if (action == "cancel") {
+        ic = rp.path("M24.778,21.419L19.276,15.917L24.777,10.415L21.949,7.585L16.447,13.087L10.945,7.585L8.117,10.415L13.618,15.917L8.116,21.419L10.946,24.248L16.447,18.746L21.948,24.248Z");
+        ic.attr({fill: "#dd4b39", stroke: "none"});
+        ic.scale(.9);
+
+        $(this).click(function() {
+            $("section#detail").empty();
+        });
+    } else return false;
+});
+
+$("div#features ul li").click(function() {
+    $(this).toggleClass("chosen");
+});
+
+$("div#products ul li").click(function() {
+    $(this).toggleClass("chosen");
+});

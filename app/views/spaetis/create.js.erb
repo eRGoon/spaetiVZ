@@ -5,6 +5,7 @@
  * Time: 19:27
  * To change this template use File | Settings | File Templates.
  */
+//@ sourceURL=createSpaeti.js
 <% if @spaeti.errors.any? -%>
 /*Hide the flash notice div*/
 $("#flash_notice").hide(300);
@@ -15,6 +16,69 @@ $("#newspaeti_errors").html("<%= escape_javascript(error_messages_for(@spaeti))%
 /*Show the div spaeti_errors*/
 $("#newspaeti_errors").show(300).delay(3000).hide(200);
 <% else -%>
+var sID = "<%= @spaeti.id %>";
+sID = parseInt(sID);
+
+$("div#features ul li.chosen").each(function() {
+    var fID = $(this).data("fid");
+
+    $.ajax({
+        async: true,
+        type: "POST",
+        url: ("/spaeti_features"),
+        data: {"spaeti": sID, "feature": fID},
+        dataType: "script"
+    });
+});
+
+var newFeatures = $("form.features_new input#features_new").val();
+
+if (newFeatures.length > 0) {
+    newFeatures = newFeatures.replace(", ", ",").split(",");
+
+    for (var i = 0; i < newFeatures.length; i++) {
+        var feature = newFeatures[i];
+
+        $.ajax({
+            async:true,
+            type: "POST",
+            url: ("/features"),
+            data: {"name": feature, "spaeti": sID},
+            dataType: "script"
+        });
+    }
+}
+
+$("div#products ul li.chosen").each(function() {
+    var pID = $(this).data("pid");
+
+    $.ajax({
+        async: true,
+        type: "POST",
+        url: ("/spaeti_products"),
+        data: {"spaeti": sID, "product": pID},
+        dataType: "script"
+    });
+});
+
+var newProducts = $("form.products_new input#products_new").val();
+
+if (newProducts.length > 0) {
+    newProducts = newProducts.replace(", ", ",").split(",");
+
+    for (var i = 0; i < newProducts.length; i++) {
+        var product = newProducts[i];
+
+        $.ajax({
+            async:true,
+            type: "POST",
+            url: ("/products"),
+            data: {"name": product, "spaeti": sID},
+            dataType: "script"
+        });
+    }
+}
+
 /*Hide the div spaeti_errors*/
 $("#newspaeti_errors").hide(300);
 
@@ -25,25 +89,9 @@ $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
 $("#flash_notice").show(300).delay(3000).hide(200);
 
 /*Clear the entire form*/
-$("form.new_spaeti :input:not(input[type=submit])").val("");
+$("form.new_spaeti :input:not(input[type=submit]), form.features_new :input").val("");
 
 /*Replace the html of the div spaeti_list with the updated new one*/
 $("section#list").html("<%= escape_javascript( render(:partial => "spaetis") ) %>");
-
-var rpL = $("section#list a.rp");
-
-rpL.each(function() {
-    var link = this;
-    var action = $(this).attr("class").split(" ")[1];
-    var rp = Raphael(link, 30, 30), ic;
-
-    if (action == "edit") {
-        ic = rp.path("M25.31,2.872l-3.384-2.127c-0.854-0.536-1.979-0.278-2.517,0.576l-1.334,2.123l6.474,4.066l1.335-2.122C26.42,4.533,26.164,3.407,25.31,2.872zM6.555,21.786l6.474,4.066L23.581,9.054l-6.477-4.067L6.555,21.786zM5.566,26.952l-0.143,3.819l3.379-1.787l3.14-1.658l-6.246-3.925L5.566,26.952z");
-        ic.attr({fill: "#4f85bb", stroke: "none"});
-        ic.scale(.75);
-    } else if (action == "del") {
-        ic = rp.path("M24.778,21.419L19.276,15.917L24.777,10.415L21.949,7.585L16.447,13.087L10.945,7.585L8.117,10.415L13.618,15.917L8.116,21.419L10.946,24.248L16.447,18.746L21.948,24.248Z");
-        ic.attr({fill: "#dd4b39", stroke: "none"});
-    } else return false;
-});
+$("section#detail").empty();
 <% end -%>

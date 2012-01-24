@@ -6,7 +6,12 @@
  * To change this template use File | Settings | File Templates.
  */
 $(document).ready(function() {
-    $("a.new").click(function() {
+    var winH = $(window).height();
+    var contentH = winH - 100;
+
+    $("div#content").height(contentH);
+    $("section").height(contentH - 45);
+    /*$("a.new").click(function() {
         if (!$("section#detail div.new").hasClass("active")) {
             $("section#detail div.active").animate({
                 height: 'toggle'
@@ -22,7 +27,7 @@ $(document).ready(function() {
             });
         }
         return false;
-    });
+    });*/
 
     var rpN = $("a.rp.new");
 
@@ -32,4 +37,12 @@ $(document).ready(function() {
         ic = rp.path("M25.979,12.896L19.312,12.896L19.312,6.229L12.647,6.229L12.647,12.896L5.979,12.896L5.979,19.562L12.647,19.562L12.647,26.229L19.312,26.229L19.312,19.562L25.979,19.562Z");
         ic.attr({fill: "#495BF5", stroke: "none"});
     });
+});
+
+$(window).resize(function() {
+    var winH = $(window).height();
+    var contentH = winH - 100;
+
+    $("div#content").height(contentH);
+    $("section").height(contentH - 45);
 });
