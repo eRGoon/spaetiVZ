@@ -8,9 +8,9 @@
 //@ sourceURL=newSpaeti.js
 $("section#detail").html("<%= escape_javascript(render(:partial => 'formnew'))%>");
 
-var rpL = $("section#detail div.commands a.rp");
+var _rpL = $("section#detail div.commands a.rp");
 
-rpL.each(function() {
+_rpL.each(function() {
     var link = this;
     var action = $(this).attr("class").split(" ")[1];
     var rp = Raphael(link, 28, 25), ic;

@@ -252,14 +252,15 @@ section#list div.item div.name {
     z-index: 1;
 }
 section#list div.item div.info {
+    display: inline-block;
     position: absolute;
     top: 50%;
-    right: 15px;
-    height: 20px;
-    line-height: 20px;
-    margin-top: -10px;
+    right: 10px;
+    height: 33px;
+    margin-top: -16px;
     z-index: 0;
     color: #666666;
+    text-align: right;
 }
 section#list div.item div.name a {
     display: block;

@@ -3,8 +3,37 @@
       <div class="name">
         <%= link_to spaeti.name, spaeti, :remote => true %>
       </div>
-        <div class="info">
-          <%= spaeti.street %> <%= spaeti.number %>, <%= spaeti.postal %> <%= spaeti.city %>
-        </div>
+      <div class="info">
+        <% @rate = Rate.find(:all, :conditions => {:sID => spaeti.id})[0] %>
+        <div id="rate"><%= render :partial => 'rates/show' %></div>
+        <div><%= spaeti.street %> <%= spaeti.number %>, <%= spaeti.postal %> <%= spaeti.city %></div>
+      </div>
     </div>
 <% end %>
+<script type="text/javascript">
+    function showRates() {
+        var divR = $("section#list div.item div.info div#rate");
+
+        divR.each(function() {
+            var rpR = $(this).find("span.rate");
+
+            rpR.each(function() {
+                var rate = this;
+                var active = $(this).attr("class").split(" ")[3];
+                var currRate = $(this).attr("class").split(" ")[2];
+                var rp = Raphael(rate, 16, 16), ic;
+
+                if (active == "true") {
+                    ic = rp.path("M16,22.375L7.116,28.83l3.396-10.438l-8.883-6.458l10.979,0.002L16.002,1.5l3.391,10.434h10.981l-8.886,6.457l3.396,10.439L16,22.375L16,22.375z");
+                } else if (active == "false") {
+                    ic = rp.path("M16,22.375L7.116,28.83l3.396-10.438l-8.883-6.458l10.979,0.002L16.002,1.5l3.391,10.434h10.981l-8.886,6.457l3.396,10.439L16,22.375L16,22.375zM22.979,26.209l-2.664-8.205l6.979-5.062h-8.627L16,4.729l-2.666,8.206H4.708l6.979,5.07l-2.666,8.203L16,21.146L22.979,26.209L22.979,26.209z");
+                } else return false;
+
+                ic.attr({fill: "#4f85bb", stroke: "#333333"});
+                ic.scale(.5, .5, 0, 0);
+            });
+        });
+    }
+
+    showRates();
+</script>

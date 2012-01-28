@@ -1,6 +1,6 @@
 $("form.edit_rate").html("<%= escape_javascript( render(:partial => "form") ) %>");
 
-var rpR = $("span.rp");
+var rpR = $("section#detail span.rate");
 var ics = new Array();
 
 rpR.each(function() {
@@ -41,3 +41,4 @@ rpR.each(function() {
         $(this).parent().submit();
     });
 });
+$("section#list").html("<%= escape_javascript( render(:partial => "spaetis/spaetis") ) %>");

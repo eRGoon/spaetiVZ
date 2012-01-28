@@ -15,8 +15,8 @@ class Spaeti < ActiveRecord::Base
   def self.search(search)
     if search
       search_condition = "%" + search + "%"
-      find(:all, :conditions => ['name LIKE ? OR district LIKE ? OR postal LIKE ? OR street LIKE ?',
-                                 search_condition, search_condition, search_condition, search_condition])
+      find(:all, :conditions => ['name LIKE ? OR district LIKE ? OR postal LIKE ? OR street LIKE ? OR city LIKE ?',
+                                 search_condition, search_condition, search_condition, search_condition, search_condition])
     else
       find(:all)
     end

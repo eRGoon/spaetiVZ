@@ -7,6 +7,7 @@ class RatesController < ApplicationController
     old_ratings = @rate.ratings
     new_ratings = old_ratings + 1
     @rate.update_attributes({:points => new_points, :ratings => new_ratings})
+    @spaetis = Spaeti.all
   end
 
   def destroy

@@ -24,6 +24,7 @@ class SpaetisController < ApplicationController
       @rate = Rate.new({:sID => @spaeti.id, :points => 0, :ratings => 0})
       @rate.save
       @spaeti_features = @spaeti.features
+      @spaeti_products = @spaeti.products
       flash[:notice] = "Spaetkauf erstellt."
     end
   end

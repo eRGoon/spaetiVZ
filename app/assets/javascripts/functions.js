@@ -11,23 +11,6 @@ $(document).ready(function() {
 
     $("div#content").height(contentH);
     $("section").height(contentH - 45);
-    /*$("a.new").click(function() {
-        if (!$("section#detail div.new").hasClass("active")) {
-            $("section#detail div.active").animate({
-                height: 'toggle'
-            }, 300, function() {
-                $("section#detail div.active").hide();
-                $("section#detail div.new").show();
-                $("section#detail div.new").animate({
-                    height: $("section#detail div.new").height()
-                }, 300, function() {
-                    $("section#detail div.active").removeClass("active");
-                    $("section#detail div.new").addClass("active");
-                });
-            });
-        }
-        return false;
-    });*/
 
     var rpN = $("a.rp.new");
 
