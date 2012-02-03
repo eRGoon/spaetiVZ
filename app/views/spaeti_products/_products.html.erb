@@ -1,7 +1,7 @@
 <% if @spaeti_products.count > 0 %>
     <ul>
       <% @spaeti_products.each do |product| %>
-          <li class="product"><%= product.name %></li>
+          <li class="product" data-id="<%= product.id %>"><%= product.name %></li>
       <% end %>
     </ul>
 <% end %>

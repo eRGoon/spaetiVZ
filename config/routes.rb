@@ -11,7 +11,12 @@ SpaetiVZ::Application.routes.draw do
 
   resources :comments
 
-  resources :spaetis
+  resources :spaetis do
+    collection do
+      post "find_by_feature"
+      post "find_by_product"
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -13,21 +13,17 @@
         <div class="clearfix"></div>
       </header>
       <%= form_for(@spaeti, :remote => true) do |f| %>
-          <%= f.label :name, "Name" %>
           <p>
-            <%= f.text_field :name %>
+            <%= f.text_field :name, :placeholder => "Name" %>
           </p>
-          <%= f.label :street, "Straße" %> / <%= f.label :number, "Hausnummer" %>
           <p>
-            <%= f.text_field :street %><%= f.text_field :number, :size => 3 %>
+            <%= f.text_field :street, :placeholder => "Straße" %><%= f.text_field :number, :placeholder => "Nr.", :size => 3 %>
           </p>
-          <%= f.label :postal, "PLZ" %> / <%= f.label :city, "Stadt" %> / <%= f.label :district, "Bezirk" %>
           <p>
-            <%= f.text_field :postal, :size => 5 %><%= f.text_field :city %><%= f.text_field :district, :size => 18 %>
+            <%= f.text_field :postal, :placeholder => "PLZ", :size => 5 %><%= f.text_field :city, :placeholder => "Stadt" %><%= f.text_field :district, :placeholder => "Bezirk", :size => 18 %>
           </p>
-          <%= f.label :open, "geöffnet bis" %>
           <p>
-            <%= f.text_field :open %>
+            <%= f.text_field :open, :placeholder => "geöffnet bis" %>
           </p>
 
           <div id="spaeti_errors"></div>

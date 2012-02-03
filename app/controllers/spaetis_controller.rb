@@ -56,6 +56,16 @@ class SpaetisController < ApplicationController
     end
   end
 
+  def find_by_feature
+    feature = Feature.find(params[:id])
+    @spaetis = feature.spaetis
+  end
+
+  def find_by_product
+    product = Product.find(params[:id])
+    @spaetis = product.spaetis
+  end
+
   def destroy
     @spaeti = Spaeti.find(params[:id])
     @spaeti.destroy

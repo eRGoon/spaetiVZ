@@ -20,7 +20,7 @@
           <%= content_tag :h1, yield(:title) if show_title? %>
           <div id="search">
             <%= form_tag spaetis_path , :method => 'get', :remote => true, :class => "search" do %>
-                  <%= text_field_tag :search, params[:search] %>
+                  <%= text_field_tag :search, params[:search], :placeholder => "alle" %>
                   <%= submit_tag "Suchen", :name => nil %>
             <% end %>
             <%= link_to "", new_spaeti_path, :remote => true, :class => "rp new", :title => "Spätkauf erstellen" %>

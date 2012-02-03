@@ -5,7 +5,7 @@
  * Time: 19:32
  * To change this template use File | Settings | File Templates.
  */
-//@ sourceURL=showSpaeti.js
+//@ sourceURL=showSpaeti
 $("section#detail").html("<%= escape_javascript(render(:partial => 'show'))%>");
 var rpL = $("section#detail div.commands a.rp");
 
@@ -64,5 +64,29 @@ rpR.each(function() {
     $(this).click(function() {
         $("input#rate_points").val(currRate);
         $(this).parent().submit();
+    });
+});
+
+var fSearch = $("section#detail div.details div#features li.feature");
+fSearch.click(function() {
+    var id = $(this).data("id");
+    $.ajax({
+        async: true,
+        type: "POST",
+        url: ("/spaetis/find_by_feature"),
+        data: {"id": id},
+        dataType: "script"
+    });
+});
+
+var pSearch = $("section#detail div.details div#products li.product");
+pSearch.click(function() {
+    var id = $(this).data("id");
+    $.ajax({
+        async: true,
+        type: "POST",
+        url: ("/spaetis/find_by_product"),
+        data: {"id": id},
+        dataType: "script"
     });
 });

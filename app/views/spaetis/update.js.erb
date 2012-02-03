@@ -1,10 +1,112 @@
+//@ sourceURL=updateSpaeti
+var errorFields;
+
 <% if @spaeti.errors.any? -%>
+var errorIDs = new Array();
+
+<% @spaeti.errors.each do |error_object| %>
+var id = "#<%= error_object %>";
+id = id.replace("#", "input#spaeti_");
+errorIDs.push(id);
+<% end %>
+
+errorFields = $(errorIDs.toString());
+
+errorFields.css("border-color", "red");
+
+if ($.inArray("input#spaeti_gmaps4rails_address", errorIDs)) {
+    $("input#spaeti_street, input#spaeti_number, input#spaeti_postal, input#spaeti_city").css("border-color", "red");
+}
+
 $("#flash_notice").hide(300);
-$("#spaeti_errors").html("<%= escape_javascript(error_messages_for(@spaeti))%>");
-$("#spaeti_errors").show(300).delay(3000).hide(200);
 <% else -%>
-$("#spaeti_errors").hide(300);
+if (errorFields) errorFields.removeAttr("style");
+
+var features = $("div#features li");
+
+features.each(function() {
+    var id = $(this).data("id"), sID = $(this).data("sid"), fID = $(this).data("fid");
+
+    if (id) {
+        if (!($(this).hasClass("chosen"))) {
+            $.post("/spaeti_features/" + id, { _method: 'delete' }, null, "script");
+        }
+    } else {
+        if ($(this).hasClass("chosen")) {
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: ("/spaeti_features"),
+                data: {"spaeti": sID, "feature": fID},
+                dataType: "script"
+            });
+        }
+    }
+});
+
+var newFeatures = $.trim($("form.features_new input#features_new").val());
+
+if (newFeatures.length > 0) {
+    newFeatures = newFeatures.replace(", ", ",").split(",");
+    var sID = "<%= @spaeti.id %>";
+
+    for (var i = 0; i < newFeatures.length; i++) {
+        var feature = newFeatures[i];
+
+        $.ajax({
+            async:true,
+            type: "POST",
+            url: ("/features"),
+            data: {"name": feature, "spaeti": sID},
+            dataType: "script"
+        });
+    }
+}
+
+var products = $("div#products li");
+
+products.each(function() {
+    var id = $(this).data("id"), sID = $(this).data("sid"), pID = $(this).data("pid");
+
+    if (id) {
+        if (!($(this).hasClass("chosen"))) {
+            $.post("/spaeti_products/" + id, { _method: 'delete' }, null, "script");
+        }
+    } else {
+        if ($(this).hasClass("chosen")) {
+            $.ajax({
+                async: true,
+                type: "POST",
+                url: ("/spaeti_products"),
+                data: {"spaeti": sID, "product": pID},
+                dataType: "script"
+            });
+        }
+    }
+});
+
+var newProducts = $.trim($("form.products_new input#products_new").val());
+
+if (newProducts.length > 0) {
+    newProducts = newProducts.replace(", ", ",").split(",");
+    var sID = "<%= @spaeti.id %>";
+
+    for (var i = 0; i < newProducts.length; i++) {
+        var product = newProducts[i];
+
+        $.ajax({
+            async:true,
+            type: "POST",
+            url: ("/products"),
+            data: {"name": product, "spaeti": sID},
+            dataType: "script"
+        });
+    }
+}
+
 $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
 $("#flash_notice").show(300).delay(3000).hide(200);
 $("section#list").html("<%= escape_javascript( render(:partial => "spaetis") ) %>");
+
+$.rails.handleRemote($("section#detail div.commands a.rp.save"));
 <% end -%>

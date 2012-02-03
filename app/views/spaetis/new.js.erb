@@ -22,6 +22,7 @@ _rpL.each(function() {
 
         $(this).click(function() {
             $.rails.handleRemote($("form.new_spaeti"));
+            return false;
         });
     } else if (action == "cancel") {
         ic = rp.path("M24.778,21.419L19.276,15.917L24.777,10.415L21.949,7.585L16.447,13.087L10.945,7.585L8.117,10.415L13.618,15.917L8.116,21.419L10.946,24.248L16.447,18.746L21.948,24.248Z");
@@ -31,13 +32,9 @@ _rpL.each(function() {
         $(this).click(function() {
             $("section#detail").empty();
         });
-    } else return false;
+    }
 });
 
-$("div#features ul li").click(function() {
-    $(this).toggleClass("chosen");
-});
-
-$("div#products ul li").click(function() {
+$("div#features ul li, div#products ul li").click(function() {
     $(this).toggleClass("chosen");
 });

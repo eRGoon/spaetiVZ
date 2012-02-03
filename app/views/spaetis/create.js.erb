@@ -5,16 +5,25 @@
  * Time: 19:27
  * To change this template use File | Settings | File Templates.
  */
-//@ sourceURL=createSpaeti.js
+//@ sourceURL=createSpaeti
 <% if @spaeti.errors.any? -%>
-/*Hide the flash notice div*/
+var errorIDs = new Array();
+
+<% @spaeti.errors.each do |error_object| %>
+var id = "#<%= error_object %>";
+id = id.replace("#", "input#spaeti_");
+errorIDs.push(id);
+<% end %>
+
+var errorFields = $(errorIDs.toString());
+
+errorFields.css("border-color", "red");
+
+if ($.inArray("input#spaeti_gmaps4rails_address")) {
+    $("input#spaeti_street, input#spaeti_number, input#spaeti_postal, input#spaeti_city").css("border-color", "red");
+}
+
 $("#flash_notice").hide(300);
-
-/*Update the html of the div spaeti_errors with the new one*/
-$("#newspaeti_errors").html("<%= escape_javascript(error_messages_for(@spaeti))%>");
-
-/*Show the div spaeti_errors*/
-$("#newspaeti_errors").show(300).delay(3000).hide(200);
 <% else -%>
 var sID = "<%= @spaeti.id %>";
 sID = parseInt(sID);
@@ -78,9 +87,6 @@ if (newProducts.length > 0) {
         });
     }
 }
-
-/*Hide the div spaeti_errors*/
-$("#newspaeti_errors").hide(300);
 
 /*Update the html of the div flash_notice with the new one*/
 $("#flash_notice").html("<%= escape_javascript(flash[:notice])%>");
