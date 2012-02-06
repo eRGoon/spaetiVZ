@@ -14,7 +14,7 @@ errorFields = $(errorIDs.toString());
 
 errorFields.css("border-color", "red");
 
-if ($.inArray("input#spaeti_gmaps4rails_address", errorIDs)) {
+if ($.inArray("input#spaeti_gmaps4rails_address", errorIDs) && !$.inArray("input#spaeti_name", errorIDs)) {
     $("input#spaeti_street, input#spaeti_number, input#spaeti_postal, input#spaeti_city").css("border-color", "red");
 }
 
